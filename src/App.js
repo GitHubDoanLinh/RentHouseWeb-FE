@@ -13,7 +13,7 @@ function App() {
           {/*<Route path={'edit/:id'} element={<UpdateProduct/>}/>*/}
           {/*<Route path={':id'} element={<ProductDetail/>}/>*/}
         </Route>
-        <Route path="*" element={<Navigate to="houses/list" />} />
+        <Route path="*" element={<Navigate to="home" />} />
         {/*dieu huong trang khi nhap sai*/}
       </Routes>
     </>

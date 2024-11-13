@@ -55,9 +55,7 @@ function Header() {
                 <div className="collapse navbar-collapse" id="navbar">
                   <ul className="navbar-nav">
                     <li className="nav-item active">
-                      <a className="nav-link" href="#">
-                        Home
-                      </a>
+                      
                     </li>
 
                     <li className="nav-item active has-child">
