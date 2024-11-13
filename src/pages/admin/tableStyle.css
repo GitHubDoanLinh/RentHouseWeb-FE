@@ -1,0 +1,16 @@
+.table th, .table td {
+    vertical-align: 0;
+}
+.table {
+    width: 90%;
+}
+.table-users {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+button {
+    height: 40px;
+    width: 80px;
+    border-radius: 10%;
+}

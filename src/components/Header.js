@@ -1,17 +1,7 @@
 import * as React from "react";
-import Paper from "@mui/material/Paper";
-import { styled } from "@mui/material/styles";
+import "./headerStyle.css";
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-  height: 50,
-}));
-
-export default function Header() {
+function Header() {
   return (
     <>
       <header className="hero">
@@ -25,6 +15,7 @@ export default function Header() {
                   </span>
                 </li>
               </ul>
+
               <ul className="right">
                 <li>
                   <a href="my-ads.html">
@@ -44,8 +35,62 @@ export default function Header() {
               </ul>
             </div>
           </div>
+          <div className="main-navigation">
+            <div className="container">
+              <nav className="navbar navbar-expand-lg navbar-light justify-content-between">
+                <a className="navbar-brand" href="index.html">
+                  <img src="assets/img/logo.png" alt="" />
+                </a>
+                <button
+                  className="navbar-toggler"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbar"
+                  aria-controls="navbar"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbar">
+                  <ul className="navbar-nav">
+                    <li className="nav-item active">
+                      <a className="nav-link" href="#">
+                        Home
+                      </a>
+                    </li>
+
+                    <li className="nav-item active has-child">
+                      <a className="nav-link" href="#">
+                        Your Profile
+                      </a>
+                      <ul className="child">
+                        <li className="nav-item">
+                          <a href="sellers.html" className="nav-link">
+                            Change Password
+                          </a>
+                        </li>
+                        <li className="nav-item">
+                          <a href="blog.html" className="nav-link">
+                            Up to Seller
+                          </a>
+                        </li>
+                        <li className="nav-item">
+                          <a href="blog-post.html" className="nav-link">
+                            Your House
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+            </div>
+          </div>
         </div>
       </header>
     </>
   );
 }
+
+export default Header;

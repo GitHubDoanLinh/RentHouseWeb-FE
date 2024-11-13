@@ -1,81 +1,125 @@
-import { Avatar } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
+import * as React from "react";
+import "./tableStyle.css";
 
-const columns = [
-  { field: "id", headerName: "ID", width: 70 },
+const houses = [
   {
-    field: "avatar",
-    headerName: "Avatar",
-    width: 100,
-    renderCell: (params) => <Avatar src={params.row.avatar} alt="Avatar" />,
+    id: 1,
+    name: "Hotel Luxury",
+    description: "Vippro",
+    price: 100,
+    startTime: "20-12-2222",
+    endTime: "20-12-2222",
+    location: "Ha noi",
+    bedRoom: 2,
+    livingRoom: 1,
+    kitchenRoom: 1,
+    category: "Hotel",
+    image: "xxxxxxxx",
   },
-  { field: "username", headerName: "User name", width: 130 },
-  { field: "email", headerName: "Email", width: 130 },
-  // {
-  //     field: 'birthDay',
-  //     headerName: 'Birth day',
-  //     type: 'date',
-  //     width: 90,
-  // }
+  {
+    id: 1,
+    name: "Hotel Luxury",
+    description: "Vippro",
+    price: 100,
+    startTime: "20-12-2222",
+    endTime: "20-12-2222",
+    location: "Ha noi",
+    bedRoom: 2,
+    livingRoom: 1,
+    kitchenRoom: 1,
+    category: "Hotel",
+    image: "xxxxxxxx",
+  },
+  {
+    id: 1,
+    name: "Hotel Luxury",
+    description: "Vippro",
+    price: 100,
+    startTime: "20-12-2222",
+    endTime: "20-12-2222",
+    location: "Ha noi",
+    bedRoom: 2,
+    livingRoom: 1,
+    kitchenRoom: 1,
+    category: "Hotel",
+    image: "xxxxxxxx",
+  },
+  {
+    id: 1,
+    name: "Hotel Luxury",
+    description: "Vippro",
+    price: 100,
+    startTime: "20-12-2222",
+    endTime: "20-12-2222",
+    location: "Ha noi",
+    bedRoom: 2,
+    livingRoom: 1,
+    kitchenRoom: 1,
+    category: "Hotel",
+    image: "xxxxxxxx",
+  },
+  {
+    id: 1,
+    name: "Hotel Luxury",
+    description: "Vippro",
+    price: 100,
+    startTime: "20-12-2222",
+    endTime: "20-12-2222",
+    location: "Ha noi",
+    bedRoom: 2,
+    livingRoom: 1,
+    kitchenRoom: 1,
+    category: "Hotel",
+    image: "xxxxxxxx",
+  },
+  {
+    id: 1,
+    name: "Hotel Luxury",
+    description: "Vippro",
+    price: 100,
+    startTime: "20-12-2222",
+    endTime: "20-12-2222",
+    location: "Ha noi",
+    bedRoom: 2,
+    livingRoom: 1,
+    kitchenRoom: 1,
+    category: "Hotel",
+    image: "xxxxxxxx",
+  },
 ];
-const rows = [
-  {
-    id: 1,
-    avatar:
-      "https://yt3.googleusercontent.com/inhxgLbhHuXL6IllrpCH9jw7jdb0aQLv4hpVdATYsBGJAwFYs8OpuvBKnKz-8M2eHp1oXvoyIQ=s900-c-k-c0x00ffffff-no-rj",
-    username: "Snow",
-    email: "abcd@gmail.com",
-    birthDay: "1992-26-05",
-  },
-  {
-    id: 1,
-    avatar:
-      "https://yt3.googleusercontent.com/inhxgLbhHuXL6IllrpCH9jw7jdb0aQLv4hpVdATYsBGJAwFYs8OpuvBKnKz-8M2eHp1oXvoyIQ=s900-c-k-c0x00ffffff-no-rj",
-    username: "Snow",
-    email: "abcd@gmail.com",
-    birthDay: "1992-26-05",
-  },
-  {
-    id: 1,
-    avatar:
-      "https://yt3.googleusercontent.com/inhxgLbhHuXL6IllrpCH9jw7jdb0aQLv4hpVdATYsBGJAwFYs8OpuvBKnKz-8M2eHp1oXvoyIQ=s900-c-k-c0x00ffffff-no-rj",
-    username: "Snow",
-    email: "abcd@gmail.com",
-    birthDay: "1992-26-05",
-  },
-  {
-    id: 1,
-    avatar:
-      "https://yt3.googleusercontent.com/inhxgLbhHuXL6IllrpCH9jw7jdb0aQLv4hpVdATYsBGJAwFYs8OpuvBKnKz-8M2eHp1oXvoyIQ=s900-c-k-c0x00ffffff-no-rj",
-    username: "Snow",
-    email: "abcd@gmail.com",
-    birthDay: "1992-26-05",
-  },
-  {
-    id: 1,
-    avatar:
-      "https://yt3.googleusercontent.com/inhxgLbhHuXL6IllrpCH9jw7jdb0aQLv4hpVdATYsBGJAwFYs8OpuvBKnKz-8M2eHp1oXvoyIQ=s900-c-k-c0x00ffffff-no-rj",
-    username: "Snow",
-    email: "abcd@gmail.com",
-    birthDay: "1992-26-05",
-  },
-];
+
 function HouseManager() {
   return (
     <>
-      <div style={{ height: 400, width: "100%" }}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: { page: 0, pageSize: 5 },
-            },
-          }}
-          pageSizeOptions={[5, 10]}
-          checkboxSelection
-        />
-      </div>
+<div className="table-users">
+                <table className="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Price</th>
+                        <th scope="col" colSpan={2}>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {houses.map((item) => (
+                            <tr key={item.id}>
+                                <th scope="row">{item.id}</th>
+                                <td><img src={item.image} alt="" style={{height:'80px' ,width:'80px',borderRadius:'20%'}}/></td>
+                                <td>{item.name}</td>
+                                <td>{item.description}</td>
+                                <td>{item.price}</td>
+                                <td style={{width:'100px'}}><button className="btn btn-primary text-caps btn-rounded btn-framed">Update</button></td>
+                                <td style={{width:'100px'}}><button className="btn btn-primary text-caps btn-rounded btn-framed">Delete</button></td>
+                            </tr>
+                        )
+                    )}
+                    </tbody>
+                </table>
+            </div>
+            <hr/>
     </>
   );
 }
