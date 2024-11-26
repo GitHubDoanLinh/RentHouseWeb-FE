@@ -1,5 +1,6 @@
 import * as React from "react";
 import "./headerStyle.css";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -19,17 +20,17 @@ function Header() {
               <ul className="right">
                 <li>
                   <a href="my-ads.html">
-                    <i className="fa fa-heart"></i>My Ads
+                    <Link to={"/home"} className="fa fa-heart">My ads</Link>
                   </a>
                 </li>
                 <li>
                   <a href="sign-in.html">
-                    <i className="fa fa-sign-in"></i>Sign In
+                  <Link to={"/home/login"}><i className="fa fa-sign-in"></i>Login</Link>
                   </a>
                 </li>
                 <li>
                   <a href="register.html">
-                    <i className="fa fa-pencil-square-o"></i>Register
+                  <Link to={"/home/register"}><i className="fa fa-pencil-square-o"></i>Register</Link>
                   </a>
                 </li>
               </ul>
