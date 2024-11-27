@@ -4,6 +4,7 @@ import UserManager from "./pages/admin/UserManager";
 import HouseManager from "./pages/admin/HouseManager";
 import Login from "./pages/authentication/Login";
 import Register from "./pages/authentication/Register";
+import ChangePassword from "./pages/users/ChangePassword";
 function App() {
   return (
     <>
@@ -13,6 +14,7 @@ function App() {
           <Route path={"register"} element={<Register />} />
           <Route path={"users"} element={<UserManager />} />
           <Route path={"houses"} element={<HouseManager />} />
+          <Route path={"change-password"} element={<ChangePassword />} />
           {/*<Route path={'add'} element={<AddProduct/>}/>*/}
           {/*<Route path={'edit/:id'} element={<UpdateProduct/>}/>*/}
           {/*<Route path={':id'} element={<ProductDetail/>}/>*/}

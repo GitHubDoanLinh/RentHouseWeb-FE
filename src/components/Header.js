@@ -20,17 +20,23 @@ function Header() {
               <ul className="right">
                 <li>
                   <a href="my-ads.html">
-                    <Link to={"/home"} className="fa fa-heart">My ads</Link>
+                    <Link to={"/home"} className="fa fa-heart">
+                      Wishlist
+                    </Link>
                   </a>
                 </li>
                 <li>
                   <a href="sign-in.html">
-                  <Link to={"/home/login"}><i className="fa fa-sign-in"></i>Login</Link>
+                    <Link to={"/home/login"}>
+                      <i className="fa fa-sign-in"></i>Login
+                    </Link>
                   </a>
                 </li>
                 <li>
                   <a href="register.html">
-                  <Link to={"/home/register"}><i className="fa fa-pencil-square-o"></i>Register</Link>
+                    <Link to={"/home/register"}>
+                      <i className="fa fa-pencil-square-o"></i>Register
+                    </Link>
                   </a>
                 </li>
               </ul>
@@ -55,9 +61,7 @@ function Header() {
                 </button>
                 <div className="collapse navbar-collapse" id="navbar">
                   <ul className="navbar-nav">
-                    <li className="nav-item active">
-                      
-                    </li>
+                    <li className="nav-item active"></li>
 
                     <li className="nav-item active has-child">
                       <a className="nav-link" href="#">
@@ -66,7 +70,9 @@ function Header() {
                       <ul className="child">
                         <li className="nav-item">
                           <a href="sellers.html" className="nav-link">
-                            Change Password
+                            <Link to={"/home/change-password"}>
+                              Change Password
+                            </Link>
                           </a>
                         </li>
                         <li className="nav-item">
