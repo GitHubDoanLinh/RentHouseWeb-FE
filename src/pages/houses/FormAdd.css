@@ -1,0 +1,28 @@
+.formAdd {
+    width: 100%;
+    /*border : 1px solid black;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:16px;
+}
+.main-formAdd {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 12px;
+}
+h2 {
+    text-align: center;
+    justify-content: center;
+}
+.row    {
+    width: 100%;
+    justify-content: center;
+}
+.col-6 {
+    width:100%
+}
+.fieldStyle {
+    width: 100%;
+}

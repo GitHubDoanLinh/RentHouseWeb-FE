@@ -9,15 +9,22 @@ import Profile from "./pages/users/profile/Profile";
 import ProfileDetail from "./pages/users/profile/ProfileDetail";
 import BookMarks from "./pages/users/profile/BookMarks";
 import ListHouseOfUser from "./pages/users/profile/ListHouseOfUser";
+import UserPage from "./pages/users/UserPage";
+import ListHouse from "./pages/users/ListHouse";
+import CreateHouse from "./pages/houses/CreateHouse";
 function App() {
   return (
     <>
       <Routes>
+        <Route path={"user"} element={<UserPage/>}>
+        <Route path={'house'} element={<ListHouse/>}/>
+        </Route>
         <Route path={"home"} element={<Home />}>
           <Route path={"login"} element={<Login />} />
           <Route path={"register"} element={<Register />} />
           <Route path={"users"} element={<UserManager />} />
           <Route path={"houses"} element={<HouseManager />} />
+          <Route path={'create'} element={<CreateHouse/>}/>
           <Route path={"profile"} element={<Profile />}>
             <Route path={"change-password"} element={<ChangePassword />} />
             <Route path={"profile-detail"} element={<ProfileDetail />} />
