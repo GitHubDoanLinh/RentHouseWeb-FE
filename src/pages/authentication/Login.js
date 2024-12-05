@@ -7,12 +7,10 @@ function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const loginUser = (value) => {
-    dispatch(
-      login(value).then((data) => {
-        console.log(data);
-      })
-    );
-  };
+    dispatch(login(value)).then((data) => {
+        console.log(data)
+    })
+}
   return (
     <> 
         <div className="page-title">

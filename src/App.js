@@ -16,15 +16,15 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path={"user"} element={<UserPage/>}>
-        <Route path={'house'} element={<ListHouse/>}/>
+        <Route path={"login"} element={<Login />} />
+        <Route path={"register"} element={<Register />} />
+        <Route path={"user"} element={<UserPage />}>
+          <Route path={"house"} element={<ListHouse />} />
         </Route>
         <Route path={"home"} element={<Home />}>
-          <Route path={"login"} element={<Login />} />
-          <Route path={"register"} element={<Register />} />
           <Route path={"users"} element={<UserManager />} />
           <Route path={"houses"} element={<HouseManager />} />
-          <Route path={'create'} element={<CreateHouse/>}/>
+          <Route path={"create"} element={<CreateHouse />} />
           <Route path={"profile"} element={<Profile />}>
             <Route path={"change-password"} element={<ChangePassword />} />
             <Route path={"profile-detail"} element={<ProfileDetail />} />

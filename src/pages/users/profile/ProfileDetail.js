@@ -7,39 +7,29 @@ function ProfileDetail() {
                         <div className="col-md-8">
                             <h2>Personal Information</h2>
                             <section>
-                                <div className="row">
-                                    <div className="col-md-4">
-                                        <div className="form-group">
-                                            <label htmlFor="title"
-                                                   className="col-form-label">Title</label>
-                                            <select name="title" id="title" data-placeholder="Title">
-                                                <option value="">Title</option>
-                                                <option value="1" selected>Mrs</option>
-                                                <option value="2">Mr</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-8">
-                                        <div className="form-group">
-                                            <label htmlFor="name" className="col-form-label required">Your
-                                                Name</label>
-                                            <input name="name" type="text" className="form-control"
-                                                   id="name" placeholder="Your Name" value="Jane Doe"
-                                                   required/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="form-group">
-                                    <label htmlFor="location" className="col-form-label required">Your
-                                        Location</label>
+                            <div className="form-group">
+                                    <label htmlFor="location" className="col-form-label required">User Name</label>
                                     <input name="location" type="text" className="form-control"
                                            id="input-location2" placeholder="Your Location"
                                            value="Manhattan, NY" required/>
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="about" className="col-form-label">More About
-                                        You</label>
-                                    <textarea name="about" id="about" className="form-control" rows="4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec tincidunt arcu, sit amet fermentum sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</textarea>
+                                <label htmlFor="location" className="col-form-label required">Full Name</label>
+                                    <input name="location" type="text" className="form-control"
+                                           id="input-location2" placeholder="Your Location"
+                                           value="Manhattan, NY" required/>
+                                </div>
+                                <div className="form-group">
+                                <label htmlFor="location" className="col-form-label required">Date Of Birth</label>
+                                    <input name="location" type="text" className="form-control"
+                                           id="input-location2" placeholder="Your Location"
+                                           value="Manhattan, NY" required/>
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="location" className="col-form-label required">Address</label>
+                                    <input name="location" type="text" className="form-control"
+                                           id="input-location2" placeholder="Your Location"
+                                           value="Manhattan, NY" required/>
                                 </div>
                             </section>
                             <section>
@@ -55,22 +45,7 @@ function ProfileDetail() {
                                            placeholder="Your Email" value="jane.doe@example.com"/>
                                 </div>
                             </section>
-                            <section>
-                                <h2>Social</h2>
-                                <div className="form-group">
-                                    <label htmlFor="twitter" className="col-form-label">Twitter</label>
-                                    <input name="twitter" type="text" className="form-control"
-                                           id="twitter" placeholder="http://"
-                                           value="http://www.twitter.com/jane.doe"/>
-                                </div>
-                                <div className="form-group">
-                                    <label htmlFor="facebook"
-                                           className="col-form-label">Facebook</label>
-                                    <input name="facebook" type="text" className="form-control"
-                                           id="facebook" placeholder="http://"
-                                           value="http://www.facebook.com/jane.doe"/>
-                                </div>
-                            </section>
+
                             <section className="clearfix">
                                 <button type="submit" className="btn btn-primary float-right">Save
                                     Changes
