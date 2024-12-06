@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function Header() {
   const logoutScreen = () => {
-    sessionStorage.removeItem("currrentToken");
+    localStorage.clear();
   };
   return (
     <>

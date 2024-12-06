@@ -20,7 +20,7 @@ export const changePassword = createAsyncThunk(
   "users/changepassword",
   async (user) =>{
     let res = await getAxios().patch("users/change-password", user);
-    return res;
+    return res.data;
   }
 )
 export const editDetailUser = createAsyncThunk(

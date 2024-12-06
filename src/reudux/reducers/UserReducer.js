@@ -9,7 +9,7 @@ import {
 
 const initialState = {
   list: [],
-  currentToken: JSON.parse(sessionStorage.getItem("currrentToken")),
+  currentToken: JSON.parse(localStorage.getItem("currentToken")),
 };
 
 const userSlice = createSlice({
@@ -18,7 +18,7 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(login.fulfilled, (state, { payload }) => {
-        sessionStorage.setItem("currrentToken", JSON.stringify(payload));
+        localStorage.setItem("currentToken",JSON.stringify(payload))
         state.currentToken = payload;
       })
       .addCase(login.rejected, (state, action) => {})

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 function getAxios() {
-    let currentUser = JSON.parse(sessionStorage.getItem("currentToken"));
+    let currentUser = JSON.parse(localStorage.getItem("currentToken"));
     if (currentUser) {
         return axios.create(
             {
