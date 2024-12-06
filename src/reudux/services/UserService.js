@@ -1,10 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import getAxios from "./customAxios";
 
 export const login = createAsyncThunk(
     "users/login",
     async (user) => {
-    let res = await axios.post("http://localhost:8080/login", user);
+      let res = await getAxios().post("/login", user)
   return res.data;
 });
 
@@ -15,10 +16,10 @@ export const register = createAsyncThunk(
   return res.data;
 });
 
-export const changepassword = createAsyncThunk(
+export const changePassword = createAsyncThunk(
   "users/changepassword",
   async (user) =>{
-    let res = await axios.patch("http://localhost:8080/users/change-password", user);
+    let res = await getAxios().patch("users/change-password", user);
     return res;
   }
 )

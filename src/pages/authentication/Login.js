@@ -1,14 +1,14 @@
 import { useDispatch } from "react-redux";
 import { login } from "../../reudux/services/UserService";
 import { Field, Form, Formik } from "formik";
-import { useNavigate } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const loginUser = (value) => {
     dispatch(login(value)).then((data) => {
-        console.log(data)
+        navigate("user/house")
     })
 }
   return (
@@ -55,7 +55,7 @@ function Login() {
                                 </Formik>
                                 <hr/>
                                 <p>
-                                    Troubles with signing? <a href="#" className="link">Click here.</a>
+                                    Troubles with signing? <Link to={"/register"}>Register</Link>
                                 </p>
                             </div>
                         </div>

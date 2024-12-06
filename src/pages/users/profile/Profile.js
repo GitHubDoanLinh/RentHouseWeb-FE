@@ -28,6 +28,10 @@ function Profile() {
                                         <i className="fa fa-star"></i>
                                         <Link to={"/home/profile/list-house-user"}>My Ads Listing</Link>
                                     </a>
+                                    <a className="nav-link icon" href="bookmarks.html">
+                                        <i className="fa fa-star"></i>
+                                        <Link to={"/home/create"}>Add House</Link>
+                                    </a>
                                     <a className="nav-link icon" href="sold-items.html">
                                         <i className="fa fa-check"></i>Sold Items
                                     </a>

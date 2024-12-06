@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { register } from "../../reudux/services/UserService";
 import { Field, Form, Formik } from "formik";
 
@@ -64,8 +64,7 @@ export default function Register() {
                                 </Formik>
                                 <hr/>
                                 <p>
-                                    By clicking "Register" button, you agree with our <a href="#" className="link">Terms
-                                    & Conditions.</a>
+                                    By clicking "Register" button, you agree with our <Link to={"/login"}>Login</Link>
                                 </p>
                             </div>
                         </div>
