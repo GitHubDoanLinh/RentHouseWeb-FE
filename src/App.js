@@ -32,7 +32,7 @@ function App() {
               <Route path={"houses"} element={<HouseManager />} />
               <Route path={"profile"} element={<Profile />}>
                 <Route path={"change-password"} element={<ChangePassword />} />
-                <Route path={"profile-detail"} element={<ProfileDetail />} />
+                <Route path={"profile-detail/:id"} element={<ProfileDetail />} />
                 <Route path={"bookmarks"} element={<Bookmarks />} />
                 <Route path={"list-house-user"} element={<ListHouseOfUser />} />
               </Route>

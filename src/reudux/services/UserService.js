@@ -23,3 +23,17 @@ export const changePassword = createAsyncThunk(
     return res;
   }
 )
+export const editDetailUser = createAsyncThunk(
+  'user/edit',
+  async (data) => {
+      let res = await getAxios().patch('users/' + data.id, data);
+      return res;
+  }
+)
+export const getUser = createAsyncThunk(
+  'user/get',
+  async (id)=>{
+    let res = await getAxios().get('users/'+id);
+    return res.data;
+  }
+)
