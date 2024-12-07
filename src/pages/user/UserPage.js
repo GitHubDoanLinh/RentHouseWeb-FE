@@ -7,7 +7,6 @@ function UserPage() {
     return (
         <>
             <HeaderUser/>
-            <NavbarUser/>
             <Outlet/>
             <Footer/>   
         </>

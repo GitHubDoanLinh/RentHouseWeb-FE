@@ -17,7 +17,7 @@ export const register = createAsyncThunk(
 });
 
 export const changePassword = createAsyncThunk(
-  "users/changepassword",
+  "users/changePassword",
   async (user) =>{
     let res = await getAxios().patch("users/change-password", user);
     return res.data;

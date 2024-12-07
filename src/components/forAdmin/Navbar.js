@@ -6,8 +6,8 @@ function Navbar() {
     <>
       <span style={{ textAlign: "center", alignItems: "center" }}>
         <h2>
-          <Link to={"/home/users"}>USER</Link> |
-          <Link to={"/home/houses"}>HOUSE</Link>
+          <Link to={"/admin/users"}>USER</Link> |
+          <Link to={"/admin/houses"}>HOUSE</Link>
         </h2>
       </span>
       <br />
