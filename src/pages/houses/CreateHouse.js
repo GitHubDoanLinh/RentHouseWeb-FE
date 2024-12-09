@@ -1,18 +1,39 @@
-import { useDispatch } from "react-redux";
+import { Field, Form, Formik } from "formik";
+import "./formAdd.css";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { add } from "../../reudux/services/HouseService";
+import { useDispatch, useSelector } from "react-redux";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { Field, Form, Formik } from "formik";
-import FormField from "../../components/UI/FormField";
-function CreateHouse() {
+import FormField, {
+  CustomSelectField,
+  CustomTextField,
+} from "../../components/UI/FormField";
+import { getAllCategories } from "../../redux/services/CategoryService";
+export default function CreateHouse() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const addHouse = (values) => {
-    dispatch(add(values)).then(() => {
-      navigate("home/houses");
+  // const addHouse = (values) => {
+  //     dispatch(add(values)).then(() => {
+  //     })
+  // }
+  const handleNext = (values) => {
+    const propsToPass = {
+      data: values,
+    };
+    console.log(propsToPass);
+    // Navigate to the next component and pass props
+    navigate("/home/addImage", {
+      state: propsToPass,
     });
   };
+  useEffect(() => {
+    dispatch(getAllCategories());
+  }, []);
+  const categories = useSelector(({ categories }) => {
+    return categories.listCategories;
+  });
+
   return (
     <>
       <h2>ADD HOUSE</h2>
@@ -31,34 +52,86 @@ function CreateHouse() {
               id: 0,
             },
             user: {
-              id: 0,
+              id: 1,
             },
-          }} onSubmit={addHouse}
+          }}
+          onSubmit={handleNext}
         >
           <div className="main-formAdd">
             <Form>
               <div className="formAdd">
                 <div className="row">
-                  <div className="col-4"><FormField name="title" label={"Name"}  type={"text"} /></div>
-                  <div className="col-4"><FormField name="price" label={"Price"}  type={"text"}/></div>
-                  <div className="col-4"><FormField name="location" label={"Location"}  type={"text"}/></div>
+                  <div className="col-4">
+                    <CustomTextField name="name" label={"Name"} type={"text"} />
+                  </div>
+                  <div className="col-4">
+                    <CustomTextField
+                      name="price"
+                      label={"Price"}
+                      type={"text"}
+                    />
+                  </div>
+                  <div className="col-4">
+                    <CustomTextField
+                      name="location"
+                      label={"Location"}
+                      type={"text"}
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="row">
-                <div className="col-8">
-                  <FormField name="description" label={"Description"}  type={"text"}/>
+                <div className="row">
+                  <div className="col-8">
+                    <CustomTextField
+                      name="description"
+                      label={"Description"}
+                      type={"text"}
+                    />
+                  </div>
+                  <div className="col-4">
+                    <CustomSelectField
+                      name="category.id"
+                      label="Select Category"
+                      options={categories}
+                    />
+                  </div>
                 </div>
-                <div className="col-4"><FormField name="category" label={"Category"}  type={"text"}/></div>
-              </div>
-              <div className="row">
-                <div className="col-3"><FormField name="bedRoom" label={"Bed Room"}  type={"text"}/></div>
-                <div className="col-3"> <FormField name="bathRoom" label={"Bath Room"}  type={"text"}/></div>
-                <div className="col-3"><FormField name="livingRoom" label={"Living Room"}  type={"text"}/></div>
-                <div className="col-3"><FormField name="kitchen" label={"Kitchen"}  type={"text"}/></div>
-              </div>
-              <div className="row">
-                <Field name="user" type="hidden" value={"defaultValue"} />
-                <button className="btn btn-success" type={"submit"}>Next</button>
+                <div className="row">
+                  <div className="col-3">
+                    <CustomTextField
+                      name="bedRoom"
+                      label={"Bed Room"}
+                      type={"text"}
+                    />
+                  </div>
+                  <div className="col-3">
+                    <CustomTextField
+                      name="bathRoom"
+                      label={"Bath Room"}
+                      type={"text"}
+                    />
+                  </div>
+                  <div className="col-3">
+                    <CustomTextField
+                      name="livingRoom"
+                      label={"Living Room"}
+                      type={"text"}
+                    />
+                  </div>
+                  <div className="col-3">
+                    <CustomTextField
+                      name="kitchen"
+                      label={"Kitchen"}
+                      type={"text"}
+                    />
+                  </div>
+                </div>
+
+                <div className="row">
+                  <Field name="user.id" type="hidden" value={1} />
+                  <button className="btn btn-success" type={"submit"}>
+                    Next
+                  </button>
+                </div>
               </div>
             </Form>
           </div>
@@ -67,5 +140,3 @@ function CreateHouse() {
     </>
   );
 }
-
-export default CreateHouse;

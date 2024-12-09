@@ -1,0 +1,21 @@
+.btn-delete {
+    background-color: #e1afaf;
+    border-radius: 4px;
+}
+.btn-style {
+    display: flex;
+    gap: 10px;
+}
+.images_upload {
+    justify-content: center;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 50px;
+}
+.btn-save {
+    background-color: #64dac9;
+    border-radius: 4px;
+}
+.title-formAddImage{
+    justify-content: center;
+}

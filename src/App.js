@@ -13,6 +13,7 @@ import UserPage from "./pages/user/UserPage";
 import ListHouse from "./pages/user/ListHouse";
 import CreateHouse from "./pages/houses/CreateHouse";
 import HouseDetail from "./pages/user/HouseDetail";
+import ImageUpload from "./firebase/ImageUpload";
 
 import { useSelector } from "react-redux";
 function App() {
@@ -37,6 +38,7 @@ function App() {
                                   <Route path={"list-house-user"} element={<ListHouseOfUser/>}/>
                               </Route>
                               <Route path={'create'} element={<CreateHouse/>}/>
+                              <Route path={'addImage'} element={<ImageUpload/>}/>
                           </Route>
                           <Route path={'admin'} element={<Home/>}>
                               <Route path={'users'} element={<UserManager/>}/>
