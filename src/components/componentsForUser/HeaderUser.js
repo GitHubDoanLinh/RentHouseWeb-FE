@@ -23,11 +23,6 @@ function HeaderUser() {
                             </ul>
                             <ul className="right">
                                 <li>
-                                    <a href="my-ads.html">
-                                    <Link to={"/home"}><i className="fa fa-heart"></i>Wishlist</Link>
-                                    </a>
-                                </li>
-                                <li>
                                     <a href="sign-in.html">
                                     <Link to={"/login"}><i className="fa fa-sign-in"></i>Log In</Link>
                                     </a>
