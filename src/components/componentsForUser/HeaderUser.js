@@ -1,12 +1,16 @@
 import Navbar from "../forAdmin/Navbar";
 import NavbarUser from "./NavbarUser";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import * as React from "react";
-import HouseDetail from "./pages/user/HouseDetail";
-
+import { useDispatch } from "react-redux";
+import { logout } from "../../reudux/services/UserService";
 function HeaderUser() {
+    const dispatch = useDispatch()
+    const navigate = useNavigate();
     const logoutScreen = () => {
-        localStorage.clear()
+        dispatch(logout()).then(() => {
+            navigate("/login")
+        })
     }
     return (
         <>
@@ -32,11 +36,8 @@ function HeaderUser() {
                                         <Link to={"/register"}><i className="fa fa-pencil-square-o"></i>Register</Link>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="register.html">
-                                        <Link to={"/login"} onClick={logoutScreen}><i
-                                            className="fa fa-pencil-square-o"></i>Logout</Link>
-                                    </a>
+                                <li style={{padding: "8px"}}>
+                                    <button onClick={logoutScreen} style={{background: "transparent", color: "white", border: 'none', cursor:'pointer'}}><i className="fa fa-pencil-square-o"></i>Logout</button>
                                 </li>
                             </ul>
                         </div>

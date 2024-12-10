@@ -12,13 +12,13 @@ import ListHouseOfUser from "./pages/user/profile/ListHouseOfUser";
 import UserPage from "./pages/user/UserPage";
 import ListHouse from "./pages/user/ListHouse";
 import CreateHouse from "./pages/houses/CreateHouse";
-import HouseDetail from "./pages/user/HouseDetail";
+import HouseDetail from "./pages/houses/HouseDetail";
 import ImageUpload from "./firebase/ImageUpload";
 import { CreateConvenient } from "./pages/houses/convenient/AddConvenientToHouse";
 import { useSelector } from "react-redux";
 function App() {
   const currentUser = useSelector(({users}) => {
-      return users.currrentToken;
+      return users.currentToken;
   })
   return (
       <>

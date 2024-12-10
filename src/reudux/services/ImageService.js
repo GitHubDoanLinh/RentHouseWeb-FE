@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import getAxios from "./customAxios";
 
 export const getAllImage = createAsyncThunk(
     'images/getAll',
@@ -15,5 +16,12 @@ export const addImages = createAsyncThunk(
         console.log(data);
         let response = await axios.get('http://localhost:8080/images/create/' +data.idHouse, data.imageList);
         return response.data;
+    }
+)
+export const getImageByHouseId = createAsyncThunk(
+    "images/getImageByHouseId",
+    async (houseId) => {
+        let res = await getAxios().get("images/" + houseId);
+        return res.data
     }
 )

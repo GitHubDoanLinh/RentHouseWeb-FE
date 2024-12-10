@@ -4,6 +4,7 @@ import {
   editDetailUser,
   getUser,
   login,
+  logout,
   register,
 } from "../services/UserService";
 
@@ -21,9 +22,15 @@ const userSlice = createSlice({
         localStorage.setItem("currentToken",JSON.stringify(payload))
         state.currentToken = payload;
       })
-      .addCase(login.rejected, (state, action) => {})
+      .addCase(login.rejected, (state, action) => {
+        state.currentToken = null;
+      })
       .addCase(register.fulfilled, (state, { payload }) => {})
       .addCase(changePassword.fulfilled, (state, action) => {})
+      .addCase(logout.fulfilled,(state, {payload}) => {
+        state.currentToken = null;
+        localStorage.clear();
+    })
       .addCase(getUser.fulfilled, (state, { payload }) => {
         state.currentUser = payload;
       })

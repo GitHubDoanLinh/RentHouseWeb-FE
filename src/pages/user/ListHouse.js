@@ -2,15 +2,17 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getAllHouse} from "../../redux/services/HouseService";
 import {Link} from "react-router-dom";
-
+import { getAllCategories } from "../../reudux/services/CategoryService";
 function ListHouse() {
     const dispatch = useDispatch();
-    const houses = useSelector(({houses})=>{
-        console.log(houses.list)
+    const categories = useSelector(state=> state.categories.listCategories)
+    const houses = useSelector(({houses}) => {
         return houses.list;
     })
     useEffect(() => {
+        dispatch(getAllCategories());
         dispatch(getAllHouse());
+
     }, [])
     return (
         <>
@@ -20,14 +22,12 @@ function ListHouse() {
                         <div className="form-row">
                             <div className="col-md-3 col-sm-3">
                                 <div className="form-group">
-                                    <label htmlFor="what" className="col-form-label">What?</label>
                                     <input name="keyword" type="text" className="form-control" id="what"
                                            placeholder="What are you looking for?"/>
                                 </div>
                             </div>
                             <div className="col-md-3 col-sm-3">
                                 <div className="form-group">
-                                    <label htmlFor="input-location" className="col-form-label">Where?</label>
                                     <input name="location" type="text" className="form-control"
                                            id="input-location" placeholder="Enter Location"/>
                                     <span className="geo-location input-group-addon" data-toggle="tooltip"
@@ -37,14 +37,10 @@ function ListHouse() {
                             </div>
                             <div className="col-md-3 col-sm-3">
                                 <div className="form-group">
-                                    <label htmlFor="category" className="col-form-label">Category?</label>
                                     <select name="category" id="category" data-placeholder="Select Category">
                                         <option value="">Select Category</option>
-                                        <option value="1">Computers</option>
-                                        <option value="2">Real Estate</option>
-                                        <option value="3">Cars & Motorcycles</option>
-                                        <option value="4">Furniture</option>
-                                        <option value="5">Pets & Animals</option>
+                                        {categories && categories.map((i)=><option value={i.id} >{i.name } </option>)
+                                        }
                                     </select>
                                 </div>
                             </div>
@@ -130,11 +126,8 @@ function ListHouse() {
                                 <select name="categories" id="categories" className="small width-200px"
                                         data-placeholder="Category">
                                     <option value="">Category</option>
-                                    <option value="1">Computers</option>
-                                    <option value="2">Real Estate</option>
-                                    <option value="3">Cars & Motorcycles</option>
-                                    <option value="4">Furniture</option>
-                                    <option value="5">Pets & Animals</option>
+                                    {categories && categories.map((i)=><option value={i.id} >{i.name } </option>)
+                                    }
                                 </select>
                                 <select name="sorting" id="sorting" className="small width-200px"
                                         data-placeholder="Default Sorting">
@@ -149,25 +142,24 @@ function ListHouse() {
 
                         <div className="items masonry grid-xl-4-items grid-lg-3-items grid-md-2-items">
 
-                            {houses.map((item) => {
-
+                        {houses && houses.map((item) => {
                                 return (
                                     <div className="item" key={item.id}>
                                         {/*<div className="ribbon-featured">Featured</div>*/}
                                         <div className="wrapper">
                                             <div className="image">
                                                 <h3>
-                                                    <a href="#" className="tag category">Home & Decor</a>
-                                                    <a href="single-listing-1.html" className="title">${item.name}</a>
+                                                <a href="#" className="tag category">{item.category.name}</a>
+                                                <Link to={`${item.id}`} className="title">{item.name}</Link>
                                                     <span className="tag">Offer</span>
                                                 </h3>
-                                                <a href="single-listing-1.html"
-                                                   className="image-wrapper background-image">
+                                                <Link to={`${item.id}`}
+                                                      className="image-wrapper background-image">
                                                     <img src="assets/img/image-01.jpg" alt=""/>
-                                                </a>
+                                                </Link>
                                             </div>
                                             <h4 className="location">
-                                                <a href="#">Manhattan, NY</a>
+                                                <a href="#">{item.location}</a>
                                             </h4>
                                             <div className="price">${item.price}</div>
                                             <div className="meta">
@@ -181,9 +173,7 @@ function ListHouse() {
                                                 </figure>
                                             </div>
                                             <div className="description">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                                                    venenatis
-                                                    lobortis</p>
+                                            <p>{item.description}</p>
                                             </div>
                                             <Link to={`${item.id}`} href="single-listing-1.html"
                                                   className="detail text-caps underline">Detail</Link>
@@ -193,14 +183,14 @@ function ListHouse() {
                                 )
                             })}
 
-                            <a href="submit.html" className="item call-to-action">
+                            {/* <a href="submit.html" className="item call-to-action">
                                 <div className="wrapper">
                                     <div className="title">
                                         <i className="fa fa-plus-square-o"></i>
                                         Submit Your Ad
                                     </div>
                                 </div>
-                            </a>
+                            </a> */}
 
 
                         </div>

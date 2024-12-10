@@ -12,7 +12,7 @@ function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const loginUser = (value) => {
-    dispatch(login(value)).then((data) => {
+    dispatch(login(value)).then(() => {
       navigate("user/house");
     });
   };
