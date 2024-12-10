@@ -1,6 +1,10 @@
+import { useSelector } from "react-redux";
 import { Link, Outlet } from "react-router-dom"
 
 function Profile() {
+    const currentUser = useSelector(({users}) => {
+        return users.currentToken;
+    })
     return (
         <>
             <section className="content">
@@ -11,7 +15,7 @@ function Profile() {
                                 <nav className="nav flex-column side-nav">
                                     <a className="nav-link icon" href="my-profile.html">
                                         <i className="fa fa-user"></i>
-                                        <Link to={"/user/profile/profile-detail"}>My Profile</Link>
+                                        <Link to={`/user/profile/profile-detail/${currentUser.id}`}>My Profile</Link>
                                     </a>
                                     <a className="nav-link active icon" href="change-password.html">
                                         <i className="fa fa-recycle"></i>

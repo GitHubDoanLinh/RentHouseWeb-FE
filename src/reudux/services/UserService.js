@@ -14,7 +14,9 @@ export const login = createAsyncThunk(
   }
 );
 
-export const register = createAsyncThunk("users/register", async (user) => {
+export const register = createAsyncThunk(
+  "users/register"
+  , async (user) => {
   let res = await axios.post("http://localhost:8080/register", user);
   return res.data;
 });
@@ -22,27 +24,34 @@ export const register = createAsyncThunk("users/register", async (user) => {
 export const changePassword = createAsyncThunk(
   "users/changePassword",
   async (user) => {
-    let res = await getAxios().patch("users/change-password", user);
+    let res = await getAxios().patch(
+      "users/change-password"
+      , user);
     return res.data;
   }
 );
-export const editDetailUser = createAsyncThunk("user/edit", async (data) => {
+
+export const editDetailUser = createAsyncThunk(
+  "user/edit"
+  , async (data) => {
   let res = await getAxios().patch("users/" + data.id, data);
   return res;
 });
-export const getUser = createAsyncThunk("user/get", async (id) => {
+
+export const getUser = createAsyncThunk(
+  "user/get"
+  , async (id) => {
   let res = await getAxios().get("users/" + id);
   return res.data;
 });
+
 export const logout = createAsyncThunk(
-  "users/logout",
-  async ()=>{
-    
-      try {
-          let res = await getAxios().get("users/logout")
-          return res.data;
-      } catch (e) {
-          console.log(e)
-      }
+  "users/logout"
+  , async () => {
+  try {
+    let res = await getAxios().get("users/logout");
+    return res.data;
+  } catch (e) {
+    console.log(e);
   }
-)
+});
