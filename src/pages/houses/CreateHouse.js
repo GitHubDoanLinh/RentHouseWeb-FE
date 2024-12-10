@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import FormField, {
+import {
   CustomSelectField,
   CustomTextField,
 } from "../../components/UI/FormField";
@@ -13,18 +13,15 @@ import { getAllCategories } from "../../redux/services/CategoryService";
 export default function CreateHouse() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const addHouse = (values) => {
-  //     dispatch(add(values)).then(() => {
-  //     })
-  // }
+
   const handleNext = (values) => {
     const propsToPass = {
       data: values,
     };
     console.log(propsToPass);
-    // Navigate to the next component and pass props
-    navigate("/home/addImage", {
+    navigate("/user/convenient", {
       state: propsToPass,
+      replace: true,
     });
   };
   useEffect(() => {

@@ -1,7 +1,15 @@
 import TextField from '@mui/material/TextField';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
-import { ErrorMessage, Field } from 'formik';
+import {
+    Checkbox,
+    createTheme,
+    FormControl,
+    FormControlLabel,
+    InputLabel,
+    MenuItem,
+    Select,
+    ThemeProvider
+} from "@mui/material";
+import {Field, useField} from "formik";
 
 // Khởi tạo theme với cấu hình tuỳ chỉnh
 const theme = createTheme({
@@ -54,6 +62,25 @@ const theme = createTheme({
                 },
             },
         },
+        MuiCheckbox: {
+            defaultProps: {
+                sx: {
+                    height: '100%',
+                    fontSize: 50,
+                    backgroundColor: 'whitesmoke',
+                    '&:focus': {
+                        backgroundColor: 'transparent',
+                    },
+                },
+            },
+        },
+        MuiFormControlLabel: {
+            styleOverrides: {
+                label: {
+                    fontSize: 16, // Kích thước font mong muốn cho CustomCheckboxField
+                },
+            },
+        },
     },
 });
 
@@ -88,8 +115,20 @@ export const CustomSelectField = ({ label, options, name, ...rest }) => {
                         </MenuItem>
                     ))}
                 </Field>
-                <ErrorMessage name={name} component="div" />
+                {/* <ErrorMessage name={name} component="div" /> */}
             </FormControl>
+        </ThemeProvider>
+    );
+};
+export const CustomCheckboxField = ({label, ...props}) => {
+    const [field] = useField(props);
+    return (
+        <ThemeProvider theme={theme}>
+            <FormControlLabel
+                control={<Checkbox {...field} {...props} />}
+                label={label}
+                style={{fontSize: theme.typography.fontSize}}
+            />
         </ThemeProvider>
     );
 };

@@ -1,31 +1,16 @@
 const ImagePreview = ({ image, onRemove }) =>{
     return (
-    <div>
+    <div className="preview-wrapper">
         <img
             src={URL.createObjectURL(image)}
             alt={`Preview`}
             style={{ maxWidth: '100px', maxHeight: '100px', margin: '5px' }}
         />
-        <button type="button" onClick={onRemove}>
-            Remove
+        <button className="delete-preview" type="button" onClick={onRemove}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-x" viewBox="0 0 16 16">
+                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+            </svg>
         </button>
     </div>
 );}
 export default ImagePreview;
-// ImagePreview.js
-// import React from 'react';
-//
-// const ImagePreview = ({ imageUrl, onRemove }) => (
-//     <div>
-//         <img
-//             src={imageUrl}
-//             alt={`Preview`}
-//             style={{ maxWidth: '100px', maxHeight: '100px', margin: '5px' }}
-//         />
-//         <button type="button" onClick={onRemove}>
-//             Remove
-//         </button>
-//     </div>
-// );
-//
-// export default ImagePreview;
