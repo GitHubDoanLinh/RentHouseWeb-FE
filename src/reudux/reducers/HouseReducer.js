@@ -24,6 +24,7 @@ const initialState = {
     user: {
       id: 0,
     },
+    convenients: [],
   },
 };
 
@@ -38,15 +39,16 @@ const houseSlice = createSlice({
       state.list.push(payload);
     });
     builder.addCase(getById.fulfilled, (state, { payload }) => {
-      state.newProduct = payload;
+      state.houseUpdate = (payload);
     });
     builder.addCase(removeById.fulfilled, (state, { payload }) => {
       state.list.splice(payload);
     });
     builder.addCase(update.fulfilled, (state, { payload }) => {
       const index = state.list.findIndex(
-        (product) => product.id === payload.id);
-        state.list[index] = payload;
+        (product) => product.id === payload.id
+      );
+      state.list[index] = payload;
     });
   },
 });
