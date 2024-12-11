@@ -19,7 +19,6 @@ export const getById = createAsyncThunk(
     "houses/getById",
     async (id) => {
         let response = await getAxios().get('houses/' +id);
-        response.data.convenients = response.data.convenients.map(item => "" + item.id)
         return response.data;
     }
 )

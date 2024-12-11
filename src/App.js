@@ -43,11 +43,10 @@ function App() {
                                         <Route path={'convenient'} element={<CreateConvenient/>}/>
                                         <Route path={'image'} element={<ImageUpload/>}/>
                                     </Route>
-                                    <Route path={"list-house-user"} element={<ListHouseOfUser/>}>
+                                    <Route path={"list-house-user/:id"} element={<ListHouseOfUser/>}>
                                         <Route path={'update/:id'} element={<UpdateHouse/>}/>
                                     </Route>
                               </Route>
-                             
                           </Route>
                           <Route path={'admin'} element={<Home/>}>
                               <Route path={'users'} element={<UserManager/>}/>

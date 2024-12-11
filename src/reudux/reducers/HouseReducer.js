@@ -6,6 +6,7 @@ import {
   removeById,
   update,
 } from "../services/HouseService";
+import { getHouseByUser } from "../services/UserService";
 
 const initialState = {
   list: [],
@@ -26,6 +27,7 @@ const initialState = {
     },
     convenients: [],
   },
+  listByUser: []
 };
 
 const houseSlice = createSlice({
@@ -50,6 +52,9 @@ const houseSlice = createSlice({
       );
       state.list[index] = payload;
     });
+    builder.addCase(getHouseByUser.fulfilled, (state, {payload}) => {
+      state.listByUser = payload;
+  })
   },
 });
 export default houseSlice.reducer;

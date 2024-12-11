@@ -30,8 +30,7 @@ function Profile() {
                                     </a>
                                     <a className="nav-link icon" href="bookmarks.html">
                                         <i className="fa fa-star"></i>
-                                        <Link to={"/user/profile/list-house-user"}>My Ads Listing</Link>
-                                    </a>
+                                        <Link to={`/user/profile/list-house-user/${currentUser.id}`}>My Ads Listing</Link>                                    </a>
                                     <a className="nav-link icon" href="bookmarks.html">
                                         <i className="fa fa-star"></i>
                                         <Link to={"/user/create"}>Add House</Link>

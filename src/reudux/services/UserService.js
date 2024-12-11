@@ -6,7 +6,7 @@ export const login = createAsyncThunk(
   "users/login",
   async (user, { rejectWithValue }) => {
     try {
-      let res = await getAxios().post("login", user);
+      let res = await getAxios().post("auth/login", user);
       return res.data;
     } catch (e) {
       return rejectWithValue(e);
@@ -15,9 +15,9 @@ export const login = createAsyncThunk(
 );
 
 export const register = createAsyncThunk(
-  "users/register"
-  , async (user) => {
-  let res = await axios.post("http://localhost:8080/register", user);
+  "users/register", 
+  async (user) => {
+    let res = await getAxios().post("auth/register", user)
   return res.data;
 });
 
@@ -32,22 +32,22 @@ export const changePassword = createAsyncThunk(
 );
 
 export const editDetailUser = createAsyncThunk(
-  "user/edit"
-  , async (data) => {
+  "user/edit", 
+  async (data) => {
   let res = await getAxios().patch("users/" + data.id, data);
   return res;
 });
 
 export const getUser = createAsyncThunk(
-  "user/get"
-  , async (id) => {
+  "user/get", 
+  async (id) => {
   let res = await getAxios().get("users/" + id);
   return res.data;
 });
 
 export const logout = createAsyncThunk(
-  "users/logout"
-  , async () => {
+  "users/logout", 
+  async () => {
   try {
     let res = await getAxios().get("users/logout");
     return res.data;
@@ -55,3 +55,11 @@ export const logout = createAsyncThunk(
     console.log(e);
   }
 });
+
+export const getHouseByUser = createAsyncThunk(
+  "houses/getHouseByUser",
+  async (userId) => {
+    let response = await getAxios().get('houses/user/' + userId);
+    return response.data;
+  }
+)
