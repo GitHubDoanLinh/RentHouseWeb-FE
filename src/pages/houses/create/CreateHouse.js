@@ -8,7 +8,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import {
   CustomSelectField,
   CustomTextField,
-} from "../../components/UI/FormField";
+} from "../../../components/UI/FormField";
 import { getAllCategories } from "../../redux/services/CategoryService";
 export default function CreateHouse() {
   const navigate = useNavigate();

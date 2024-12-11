@@ -18,6 +18,7 @@ export const addImages = createAsyncThunk(
         return response.data;
     }
 )
+
 export const getImageByHouseId = createAsyncThunk(
     "images/getImageByHouseId",
     async (houseId) => {
@@ -25,3 +26,10 @@ export const getImageByHouseId = createAsyncThunk(
         return res.data
     }
 )
+
+export const removeImageById = createAsyncThunk(
+    'images/remove',
+    async (id) => {
+        let response = await axios.delete('http://localhost:8080/images/delete/' + id);
+        return response.data;
+    })

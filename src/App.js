@@ -11,7 +11,7 @@ import Bookmarks from "./pages/user/profile/BookMarks";
 import ListHouseOfUser from "./pages/user/profile/ListHouseOfUser";
 import UserPage from "./pages/user/UserPage";
 import ListHouse from "./pages/user/ListHouse";
-import CreateHouse from "./pages/houses/CreateHouse";
+import CreateHouse from "./pages/houses/create/CreateHouse";
 import HouseDetail from "./pages/houses/HouseDetail";
 import ImageUpload from "./firebase/ImageUpload";
 import { CreateConvenient } from "./pages/houses/convenient/AddConvenientToHouse";
@@ -35,15 +35,17 @@ function App() {
                           <Route path={'user'} element={<UserPage/>}>
                               <Route path={'house'} element={<ListHouse/>}/>
                               <Route path={'house/:id'} element={<HouseDetail/>}/>
-                              <Route path={'create'} element={<CreateHouse/>}/>
-                              <Route path={'addImage'} element={<ImageUpload/>}/>
-                              <Route path={'convenient'} element={<CreateConvenient/>}/>
-                              <Route path={'houseupdate/:id'} element={<UpdateHouse/>}/>
                               <Route path={'profile'} element={<Profile/>}>
                                   <Route path={`profile-detail/:id`} element={<ProfileDetail/>}/>
                                   <Route path={"change-password"} element={<ChangePassword/>}/>
                                   <Route path={"bookmarks"} element={<Bookmarks/>}/>
-                                  <Route path={"list-house-user"} element={<ListHouseOfUser/>}/>
+                                  <Route path={'create'} element={<CreateHouse/>}>
+                                        <Route path={'convenient'} element={<CreateConvenient/>}/>
+                                        <Route path={'image'} element={<ImageUpload/>}/>
+                                    </Route>
+                                    <Route path={"list-house-user"} element={<ListHouseOfUser/>}>
+                                        <Route path={'update/:id'} element={<UpdateHouse/>}/>
+                                    </Route>
                               </Route>
                              
                           </Route>
