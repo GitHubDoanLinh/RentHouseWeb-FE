@@ -33,20 +33,18 @@ function App() {
                   currentUser ? (
                       <>
                           <Route path={'user'} element={<UserPage/>}>
-                              <Route path={'house'} element={<ListHouse/>}/>
-                              <Route path={'house/:id'} element={<HouseDetail/>}/>
-                              <Route path={'profile'} element={<Profile/>}>
-                                  <Route path={`profile-detail/:id`} element={<ProfileDetail/>}/>
-                                  <Route path={"change-password"} element={<ChangePassword/>}/>
-                                  <Route path={"bookmarks"} element={<Bookmarks/>}/>
-                                  <Route path={'create'} element={<CreateHouse/>}>
-                                        <Route path={'convenient'} element={<CreateConvenient/>}/>
-                                        <Route path={'image'} element={<ImageUpload/>}/>
-                                    </Route>
-                                    <Route path={"list-house-user/:id"} element={<ListHouseOfUser/>}>
-                                        <Route path={'update/:id'} element={<UpdateHouse/>}/>
-                                    </Route>
-                              </Route>
+                            <Route path={'house'} element={<ListHouse/>}/>
+                            <Route path={'house/:id'} element={<HouseDetail/>}/>
+                            <Route path={'create'} element={<CreateHouse/>}/>
+                            <Route path={'addImage'} element={<ImageUpload/>}/>
+                            <Route path={'convenient'} element={<CreateConvenient/>}/>
+                            <Route path={'houseupdate/:id'} element={<UpdateHouse/>}/>
+                            <Route path={'profile'} element={<Profile/>}>
+                                <Route path={`profile-detail/:id`} element={<ProfileDetail/>}/>
+                                <Route path={"change-password"} element={<ChangePassword/>}/>
+                                <Route path={"bookmarks"} element={<Bookmarks/>}/>
+                                <Route path={"list-house-user/:id"} element={<ListHouseOfUser/>}/>
+                            </Route>
                           </Route>
                           <Route path={'admin'} element={<Home/>}>
                               <Route path={'users'} element={<UserManager/>}/>

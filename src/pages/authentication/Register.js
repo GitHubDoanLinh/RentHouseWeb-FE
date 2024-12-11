@@ -12,7 +12,7 @@ export default function Register() {
     const navigate = useNavigate();
     let handleRegister = (value) => {
         dipatch(register(value)).then((data) => {
-            navigate("/home/login")
+            navigate("/login")
         })
     }
     return (

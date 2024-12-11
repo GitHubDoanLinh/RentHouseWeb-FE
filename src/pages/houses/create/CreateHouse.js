@@ -18,7 +18,6 @@ export default function CreateHouse() {
     const propsToPass = {
       data: values,
     };
-    console.log(propsToPass);
     navigate("/user/convenient", {
       state: propsToPass,
       replace: true,

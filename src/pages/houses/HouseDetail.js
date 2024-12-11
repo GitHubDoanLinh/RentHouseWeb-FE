@@ -72,8 +72,7 @@ export default function HouseDetail() {
                                             if (index % 3 === 0) rows.push([]);
                                             rows[rows.length - 1].push(item);
                                             return rows;
-                                        }, []).map((row, rowIndex) => (
-                                          
+                                        }, []).map((row, rowIndex) => (                                          
                                             <div key={rowIndex}
                                                  className={`carousel-item ${rowIndex === 0 ? 'active' : ''}`}>
                                                 <div className="row">

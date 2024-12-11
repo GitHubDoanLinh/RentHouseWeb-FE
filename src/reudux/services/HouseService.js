@@ -37,3 +37,10 @@ export const update = createAsyncThunk(
         return response.data;
     }
 )
+export const getHouseByUser = createAsyncThunk(
+    "houses/getHouseByUser",
+    async (userId) => {
+        let response = await getAxios().get('houses/user/' + userId);
+        return response.data;
+    }
+)

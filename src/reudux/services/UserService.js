@@ -56,10 +56,3 @@ export const logout = createAsyncThunk(
   }
 });
 
-export const getHouseByUser = createAsyncThunk(
-  "houses/getHouseByUser",
-  async (userId) => {
-    let response = await getAxios().get('houses/user/' + userId);
-    return response.data;
-  }
-)

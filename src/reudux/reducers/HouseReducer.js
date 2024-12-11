@@ -5,8 +5,8 @@ import {
   getById,
   removeById,
   update,
+  getHouseByUser
 } from "../services/HouseService";
-import { getHouseByUser } from "../services/UserService";
 
 const initialState = {
   list: [],
