@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getById, getHouseByUser } from "../../../redux/services/HouseService";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 export default function ListHouseOfUser() {
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -81,9 +81,9 @@ export default function ListHouseOfUser() {
                   </h4>
                   <div className="price">{item.price} VND</div>
                   <div className="admin-controls">
-                    <a href="edit-ad.html">
+                    <Link to={"/"} href="edit-ad.html">
                       <i className="fa fa-pencil"></i>Edit
-                    </a>
+                    </Link>
                     <a href="#" className="ad-hide">
                       <i className="fa fa-eye-slash"></i>Hide
                     </a>
@@ -96,12 +96,9 @@ export default function ListHouseOfUser() {
                     <p>{item.description}</p>
                   </div>
 
-                  <a
-                    href="single-listing-1.html"
-                    className="detail text-caps underline"
-                  >
-                    Detail
-                  </a>
+                  <Link to={`http://localhost:3000/user/house/${item.id}`} href="single-listing-1.html"
+                                   className="detail text-caps underline">Detail</Link>
+                  
                 </div>
               </div>
             ))}

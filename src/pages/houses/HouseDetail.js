@@ -7,6 +7,7 @@ import {getById} from "../../redux/services/HouseService";
 
 export default function HouseDetail() {
     const [activeIndex, setActiveIndex] = useState(0);
+    const [fetched, setFetched] = useState(false);
 
     const handleThumbnailClick = (index) => {
         setActiveIndex(index);
@@ -17,12 +18,11 @@ export default function HouseDetail() {
         return images.listImage;
     })
     const houseDetail = useSelector(({houses}) => {
-        console.log(houses.houseUpdate)
+        console.log(houses)
         return houses.houseUpdate
     })
     useEffect(() => {
-        dispatch(getById(id))
-        dispatch(getImageByHouseId(id))
+        dispatch(getById(id)).then(() => dispatch(getImageByHouseId(id)).then(() => setFetched(true)))
     }, []);
     const carouselItemStyle = {
         height: '720px', // Adjust the height to your preference
@@ -31,7 +31,7 @@ export default function HouseDetail() {
 
     return (
         <>
-            <div className="page sub-page">
+            {fetched && <div className="page sub-page">
                 <div className="hero" style={{backgroundColor: "#f2f2f2"}}>
                     <div className="hero-wrapper">
                         <div className="page-title">
@@ -116,22 +116,22 @@ export default function HouseDetail() {
                                     <section><h2>Details</h2>
                                         <dl className="columns-3">
                                            
-                                            <dt>bedRoom</dt>
+                                            <dt>BedRoom</dt>
                                             <dd>{houseDetail.bedRoom}</dd>
-                                            <dt>bathRoom</dt>
+                                            <dt>BathRoom</dt>
                                             <dd>{houseDetail.bathRoom}</dd>
-                                            <dt>livingRoom</dt>
+                                            <dt>LivingRoom</dt>
                                             <dd>{houseDetail.livingRoom}</dd>
-                                            <dt>kitchen</dt>
+                                            <dt>Kitchen</dt>
                                             <dd>{houseDetail.kitchen}</dd>
-                                            <dt>category</dt>
+                                            <dt>Category</dt>
                                             <dd>{houseDetail.category.name}</dd>
                                         </dl>
                                     </section>
                                     <section><h2>Location</h2>
                                         <div className="map height-300px" id="map-small"></div>
                                     </section>
-                                    <section><h2>Features</h2>
+                                    <section><h2>Convenients</h2>
                                         <ul className="features-checkboxes columns-3">
                                          
                                             {houseDetail.convenients.map((item) =>
@@ -238,7 +238,8 @@ export default function HouseDetail() {
                                                         <div className="background-image"><img
                                                             src="assets/img/author-01.jpg" alt=""/></div>
                                                     </div>
-                                                    <div className="author-description"><h3>Jane Doe</h3>
+                                                    <div className="author-description">
+                                                        <h3>{houseDetail.userDTO.fullName}</h3>
                                                         <div className="rating" data-rating="4"></div>
                                                         <a href="seller-detail-1.html" className="text-uppercase">Show
                                                             My Listings <span className="appendix">(12)</span> </a>
@@ -247,9 +248,9 @@ export default function HouseDetail() {
                                                 <hr/>
                                                 <dl>
                                                     <dt>Phone</dt>
-                                                    <dd>830-247-0930</dd>
+                                                    <dd>{houseDetail.userDTO.phone}</dd>
                                                     <dt>Email</dt>
-                                                    <dd>hijane@example.com</dd>
+                                                    <dd>{houseDetail.userDTO.email}</dd>
                                                 </dl>
                                                 <form className="form email">
                                                     <div className="form-group"><label htmlFor="name"
@@ -276,7 +277,7 @@ export default function HouseDetail() {
                         </div>
                     </section>
                 </section>
-            </div>
+            </div>}
         </>
     )
 }
