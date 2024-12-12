@@ -5,17 +5,27 @@ import { getAllConvenient } from "../../../redux/services/ConvenientService";
 import { getAllCategories } from "../../../redux/services/CategoryService";
 import { getById, update } from "../../../redux/services/HouseService";
 import { LocalizationProvider } from "@mui/x-date-pickers";
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import {
   CustomCheckboxField,
   CustomSelectField,
   CustomTextField,
 } from "../../../components/UI/FormField";
+import * as Yup from "yup";
 
 export function UpdateHouse() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const addSchema = Yup.object().shape({
+    name: Yup.string().required("Vui lòng nhập đủ thông tin!"),
+    price: Yup.number()
+      .positive("Số phải lớn hơn 0!")
+      .integer("Số phải là số nguyên!")
+      .required("Vui lòng nhập đủ thông tin!"),
+    location: Yup.string().required("Vui lòng nhập đủ thông tin!"),
+    description: Yup.string().required("Vui lòng nhập đủ thông tin!"),
+  });
   const [fetched, setFetched] = useState(false);
   const { id } = useParams();
   useEffect(() => {
@@ -61,6 +71,7 @@ export function UpdateHouse() {
               initialValues={houses}
               enableReinitialize={true}
               onSubmit={save}
+              validationSchema={addSchema}
             >
               <div className="main-formAdd">
                 <Form>
@@ -72,6 +83,9 @@ export function UpdateHouse() {
                           label={"Name"}
                           type={"text"}
                         />
+                        <div className="validateNamePro">
+                            <p style={{color: "red"}}><ErrorMessage name={"name"}/></p>
+                        </div>
                       </div>
                       <div className="col-4">
                         <CustomTextField
@@ -79,6 +93,9 @@ export function UpdateHouse() {
                           label={"Price"}
                           type={"text"}
                         />
+                        <div className="validateNamePro">
+                          <p style={{color: "red"}}><ErrorMessage name={"price"}/></p>
+                        </div>
                       </div>
                       <div className="col-4">
                         <CustomTextField
@@ -86,6 +103,9 @@ export function UpdateHouse() {
                           label={"Location"}
                           type={"text"}
                         />
+                        <div className="validateNamePro">
+                              <p style={{color: "red"}}><ErrorMessage name={"location"}/></p>
+                          </div>
                       </div>
                     </div>
                     <div className="row">
@@ -95,6 +115,9 @@ export function UpdateHouse() {
                           label={"Description"}
                           type={"text"}
                         />
+                        <div className="validateNamePro">
+                            <p style={{color: "red"}}><ErrorMessage name={"description"}/></p>
+                        </div>
                       </div>
                       <div className="col-4">
                         <CustomSelectField

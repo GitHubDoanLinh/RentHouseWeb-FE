@@ -34,9 +34,7 @@ const ImageUploadForm = () => {
             const imageUrl = await getDownloadURL(imageRef);
             images.push(imageUrl);
         }
-        console.log(images);
         let data = { ...propsReceived, images };
-        console.log(data);
         await dispatch(add(data)).then(() => {
           navigate("/user");
         });

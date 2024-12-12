@@ -1,4 +1,4 @@
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import "./FormAdd.css";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +10,22 @@ import {
   CustomTextField,
 } from "../../../components/UI/FormField";
 import { getAllCategories } from "../../../redux/services/CategoryService";
+import * as Yup from "yup";
+
 export default function CreateHouse() {
+  const addSchema = Yup.object().shape({
+    name: Yup.string().required("Vui lòng nhập đủ thông tin!"),
+    price: Yup.number()
+      .positive("Số phải lớn hơn 0!")
+      .integer("Số phải là số nguyên!")
+      .required("Vui lòng nhập đủ thông tin!"),
+    location: Yup.string().required("Vui lòng nhập đủ thông tin!"),
+    description: Yup.string().required("Vui lòng nhập đủ thông tin!"),
+  });
+  const currentUserId = useSelector(({ users }) => {
+    return users.currentToken.id;
+  });
+  console.log(currentUserId);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -52,6 +67,7 @@ export default function CreateHouse() {
             },
           }}
           onSubmit={handleNext}
+          validationSchema={addSchema}
         >
           <div className="main-formAdd">
             <Form>
@@ -59,6 +75,11 @@ export default function CreateHouse() {
                 <div className="row">
                   <div className="col-4">
                     <CustomTextField name="name" label={"Name"} type={"text"} />
+                    <div className="validateNamePro">
+                      <p style={{ color: "red" }}>
+                        <ErrorMessage name={"name"} />
+                      </p>
+                    </div>
                   </div>
                   <div className="col-4">
                     <CustomTextField
@@ -66,6 +87,11 @@ export default function CreateHouse() {
                       label={"Price"}
                       type={"text"}
                     />
+                    <div className="validateNamePro">
+                      <p style={{ color: "red" }}>
+                        <ErrorMessage name={"price"} />
+                      </p>
+                    </div>
                   </div>
                   <div className="col-4">
                     <CustomTextField
@@ -73,6 +99,11 @@ export default function CreateHouse() {
                       label={"Location"}
                       type={"text"}
                     />
+                    <div className="validateNamePro">
+                      <p style={{ color: "red" }}>
+                        <ErrorMessage name={"location"} />
+                      </p>
+                    </div>
                   </div>
                 </div>
                 <div className="row">
@@ -82,6 +113,11 @@ export default function CreateHouse() {
                       label={"Description"}
                       type={"text"}
                     />
+                    <div className="validateNamePro">
+                      <p style={{ color: "red" }}>
+                        <ErrorMessage name={"description"} />
+                      </p>
+                    </div>
                   </div>
                   <div className="col-4">
                     <CustomSelectField
@@ -123,7 +159,7 @@ export default function CreateHouse() {
                 </div>
 
                 <div className="row">
-                  <Field name="user.id" type="hidden" value={1} />
+                  <Field name="user.id" type="hidden" value={currentUserId} />
                   <button className="btn btn-success" type={"submit"}>
                     Next
                   </button>
