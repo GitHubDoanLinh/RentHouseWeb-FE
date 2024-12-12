@@ -1,4 +1,3 @@
-import ImagePreview from "../../../components/UI/ImagePreview";
 import React from "react";
 export default function ShowFormImageUpdate () {
     return (

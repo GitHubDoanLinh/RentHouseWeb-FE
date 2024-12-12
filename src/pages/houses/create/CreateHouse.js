@@ -9,7 +9,7 @@ import {
   CustomSelectField,
   CustomTextField,
 } from "../../../components/UI/FormField";
-import { getAllCategories } from "../../redux/services/CategoryService";
+import { getAllCategories } from "../../../redux/services/CategoryService";
 export default function CreateHouse() {
   const navigate = useNavigate();
   const dispatch = useDispatch();

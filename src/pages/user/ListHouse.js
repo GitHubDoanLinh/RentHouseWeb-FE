@@ -2,7 +2,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getAllHouse} from "../../redux/services/HouseService";
 import {Link} from "react-router-dom";
-import { getAllCategories } from "../../reudux/services/CategoryService";
+import { getAllCategories } from "../../redux/services/CategoryService";
 function ListHouse() {
     const dispatch = useDispatch();
     const categories = useSelector(state=> state.categories.listCategories)

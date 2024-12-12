@@ -1,11 +1,11 @@
 import { useDispatch } from "react-redux";
-import { login } from "../../reudux/services/UserService";
+import { login } from "../../redux/services/UserService";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import TextField from "@mui/material/TextField";
-import { Button, colors } from "@mui/material";
-import Weather from "../extenstion/Weather";
+import { Button } from "@mui/material";
+import Weather from "../extension/Weather";
 import "./Login.css";
 
 function Login() {

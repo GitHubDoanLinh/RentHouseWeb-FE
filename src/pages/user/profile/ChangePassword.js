@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { changePassword } from "../../../reudux/services/UserService";
+import { changePassword } from "../../../redux/services/UserService";
 import { Form, Formik, Field } from "formik";
 import { useNavigate } from "react-router-dom";
 

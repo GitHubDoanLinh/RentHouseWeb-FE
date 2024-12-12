@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom";
-import { editDetailUser, getUser } from "../../../reudux/services/UserService";
+import { editDetailUser, getUser } from "../../../redux/services/UserService";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { Field, Form, Formik } from "formik";
