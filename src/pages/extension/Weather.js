@@ -1,11 +1,11 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
-import ImaIcon from '../extenstion/img/sun.png';
-import ImaIcon1 from '../extenstion/img/mayit.png'
-import ImaIcon2 from '../extenstion/img/maynhieu.png'
-import ImaIcon3 from '../extenstion/img/muanho.png'
-import ImaIcon4 from '../extenstion/img/muavua.png'
-import ImaIcon5 from '../extenstion/img/muatuyet.png'
+import ImaIcon from '../extension/img/sun.png';
+import ImaIcon1 from '../extension/img/mayit.png'
+import ImaIcon2 from '../extension/img/maynhieu.png'
+import ImaIcon3 from '../extension/img/muanho.png'
+import ImaIcon4 from '../extension/img/muavua.png'
+import ImaIcon5 from '../extension/img/muatuyet.png'
 const Weather = () => {
     const [weather, setWeather] = useState(null);
     useEffect(() => {

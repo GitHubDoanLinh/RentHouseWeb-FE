@@ -6,7 +6,7 @@
     margin-left: 0;
 }
 .auth-bg-image {
-    background: url(../../pages/extenstion/img/auth-bg.png) no-repeat;
+    background: url(../extension/img/auth-bg.png) no-repeat;
     background-size: cover;
 }
 .auth-left-content,

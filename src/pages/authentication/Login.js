@@ -25,7 +25,7 @@ function Login() {
               <div className="row">
                 <div className="col-md-2">
                   <img
-                    src={require("../../pages/extenstion/img/logo_app.png")}
+                    src={require("../extension/img/logo_app.png")}
                     className="logo-img"
                     alt="Logo"
                   />
