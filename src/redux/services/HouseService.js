@@ -27,7 +27,7 @@ export const getById = createAsyncThunk(
 export const removeById = createAsyncThunk(
     'houses/remove',
     async (id  ) => {
-        let response = await getAxios().delete('houses/' + id);
+        let response = await getAxios().delete('houses/delete/' + id);
         return response.data;
     }
 )

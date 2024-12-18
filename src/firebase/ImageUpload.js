@@ -36,6 +36,7 @@ const ImageUploadForm = () => {
         }
         let data = { ...propsReceived, images };
         await dispatch(add(data)).then(() => {
+          console.log(data)
           navigate("/user");
         });
       }}
