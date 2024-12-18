@@ -11,6 +11,16 @@ import {
 const initialState = {
   list: [],
   currentToken: JSON.parse(localStorage.getItem("currentToken")),
+  currentUser: {
+    username: "",
+    email: "",
+    fullName: "",
+    address: "",
+    phone: "",
+    age: "",
+    dateOfBirth: "",
+    imageUser: "",
+  },
 };
 
 const userSlice = createSlice({
@@ -19,7 +29,7 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(login.fulfilled, (state, { payload }) => {
-        localStorage.setItem("currentToken",JSON.stringify(payload))
+        localStorage.setItem("currentToken", JSON.stringify(payload));
         state.currentToken = payload;
       })
       .addCase(login.rejected, (state, action) => {
@@ -27,14 +37,20 @@ const userSlice = createSlice({
       })
       .addCase(register.fulfilled, (state, { payload }) => {})
       .addCase(changePassword.fulfilled, (state, action) => {})
-      .addCase(logout.fulfilled,(state, {payload}) => {
+      .addCase(logout.fulfilled, (state, { payload }) => {
         state.currentToken = null;
         localStorage.clear();
-    })
+      })
       .addCase(getUser.fulfilled, (state, { payload }) => {
         state.currentUser = payload;
       })
-      .addCase(editDetailUser.fulfilled, (state, action) => {});
+      .addCase(editDetailUser.fulfilled, (state, action) => {})
+      .addCase(getUser.fulfilled, (state, {payload}) => {
+        state.currentUser = payload;
+      })
+      .addCase(editDetailUser.fulfilled, (state, {action})=>{
+        
+      });
   },
 });
 export default userSlice.reducer;

@@ -5,21 +5,29 @@ import { editDetailUser, getUser } from "../../../redux/services/UserService";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { Field, Form, Formik } from "formik";
+import { storage } from "../../../firebase/FireBaseConfig";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import {v4 as uuidv4} from "uuid";
 
 function ProfileDetail() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const id = useParams();
+
     useEffect(()=>{
         dispatch(getUser(id))
     },[dispatch, id])
+
     const personalInfo = useSelector(({users}) => {
         return users.currentUser;
     })
+
     const [user, setUser] = useState(personalInfo)
+
     useEffect(() => {
         setUser(personalInfo)
     }, [personalInfo]);
+
     const handleSaveChanges = (values, setSubmitting) => {
         const request = {...values, user}
         dispatch(editDetailUser(request))
@@ -41,19 +49,22 @@ function ProfileDetail() {
                 });
             }).finally(() => setSubmitting(false));
     };
+
     const [loading, setLoading] = useState(false);
-    // const handleUpload = async (e) => {
-    //     setLoading(true)
-    //     const files = e.target.files;
-    //     if (files[0]) {
-    //         const imageRef = ref(storage, `images/${files[0].name + uuidv4()}`);
-    //         await uploadBytes(imageRef, files[0]);
-    //         const imageUrl = await getDownloadURL(imageRef);
-    //         setUser((prevUser) => ({...prevUser, imageUser: imageUrl}))
-    //         setLoading(false)
-    //     }
-    //     setLoading(false)
-    // }
+
+    const handleUpload = async (e) => {
+        setLoading(true)
+        const files = e.target.files;
+        if (files[0]) {
+            const imageRef = ref(storage, `images/${files[0].name + uuidv4()}`);
+            await uploadBytes(imageRef, files[0]);
+            const imageUrl = await getDownloadURL(imageRef);
+            setUser((prevUser) => ({...prevUser, imageUser: imageUrl}))
+            setLoading(false)
+        }
+        setLoading(false)
+    }
+    
     if (!user && !user.imageUser) {
         return (
             <>
@@ -133,9 +144,9 @@ function ProfileDetail() {
                                             <div className="single-file-input">
                                                 <label className="btn btn-framed btn-primary small" htmlFor={"user_image"}>
 
-                                                    {/* <input type="file" id="user_image" name="user_image" onChange={(e) => {
+                                                    <input type="file" id="user_image" name="user_image" onChange={(e) => {
                                                         handleUpload(e)
-                                                    }}/> */}
+                                                    }}/>
 
                                                     {loading ? 'Uploading...' : 'Tải ảnh lên'}
                                                 </label>

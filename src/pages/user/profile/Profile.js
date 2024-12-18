@@ -28,17 +28,7 @@ function Profile() {
                                     <a className="nav-link icon" href="sold-items.html">
                                         <i className="fa fa-check"></i>History Buy (Order)
                                     </a>
-                                    <a className="nav-link icon" href="bookmarks.html">
-                                        <i className="fa fa-star"></i>
-                                        <Link to={`/user/profile/list-house-user/${currentUser.id}`}>My Ads Listing</Link>                                    </a>
-                                    <a className="nav-link icon" href="bookmarks.html">
-                                        <i className="fa fa-star"></i>
-                                        <Link to={"/user/create"}>Add House</Link>
-                                    </a>
-                                    <a className="nav-link icon" href="sold-items.html">
-                                        <i className="fa fa-check"></i>
-                                        <Link to={"/user/addImage"}>Sold Items</Link>
-                                    </a>
+                                    
                                 </nav>
                             </div>
                             <Outlet/>
