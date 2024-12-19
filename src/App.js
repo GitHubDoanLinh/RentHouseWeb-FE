@@ -18,6 +18,7 @@ import { CreateConvenient } from "./pages/houses/convenient/AddConvenientToHouse
 import { useSelector } from "react-redux";
 import { UpdateHouse } from "./pages/houses/update/UpdateHouse";
 import ManagerHouse from "./pages/user/managerHouse/ManagerHouse";
+import ShowFormImageUpdate from "./pages/houses/update/ShowUpdateImage";
 function App() {
   const currentUser = useSelector(({users}) => {
       return users.currentToken;
@@ -35,6 +36,7 @@ function App() {
                       <>
                           <Route path={'user'} element={<UserPage/>}>
                             <Route path={'house'} element={<ListHouse/>}/>
+                            <Route path={'images/:idHouse'} element={<ShowFormImageUpdate/>}/>
                             <Route path={'house/:id'} element={<HouseDetail/>}/>
                             <Route path={'create'} element={<CreateHouse/>}/>
                             <Route path={'addImage'} element={<ImageUpload/>}/>

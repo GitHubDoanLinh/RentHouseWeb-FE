@@ -189,10 +189,10 @@ export default function Register() {
         <div className="col-md-6 auth-bg-image d-flex justify-content-center align-items-center">
           <div className="auth-left-content mt-5 mb-5 text-center">
             <Weather />
-            <div className="text-white mt-5 mb-5">
-              <h2 className="create-account mb-3">Create Account</h2>
-              <p>Enter your personal details and start journey with us.</p>
-            </div>
+            {/*<div className="text-black-50 mt-5 mb-5">*/}
+            {/*    <h2 className="create-account mb-3">Create Account</h2>*/}
+            {/*    <p>Enter your personal details and start journey with us.</p>*/}
+            {/*</div>*/}
           </div>
         </div>
       </div>

@@ -6,11 +6,12 @@
     margin-left: 0;
 }
 .auth-bg-image {
-    background: url(../extension/img/auth-bg.png) no-repeat;
+    background: url(https://i.pinimg.com/564x/80/61/c0/8061c0542aa960c4169e26e8f4653406.jpg) no-repeat;
     background-size: cover;
 }
 .auth-left-content,
 .signup-form {
+    color: black;
     width: 500px;
 }
 .weather-small .current-weather {
@@ -94,4 +95,7 @@
     height: 40px;
     font-size: 12px;
     background-color: #ff0000;
+}
+.text-title {
+    color: red;
 }

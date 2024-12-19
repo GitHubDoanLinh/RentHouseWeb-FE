@@ -30,7 +30,7 @@ function NavbarUser() {
                                 </li>
                                 <li className="nav-item has-child">
                                     <Link to={`/user/profile/profile-detail/${currentUser.id}`} className="nav-link" href="#">Your
-                                    Profile</Link>
+                                        Profile</Link>
                                     <ul className="child">
                                         <li className="nav-item has-child">
                                         <Link to={`/user/profile/profile-detail/${currentUser.id}`} href="#"

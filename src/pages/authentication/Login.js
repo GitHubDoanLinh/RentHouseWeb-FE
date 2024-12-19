@@ -126,13 +126,13 @@ function Login() {
         <div className="col-md-6 auth-bg-image d-flex justify-content-center align-items-center">
           <div className="auth-left-content mt-5 mb-5 text-center">
             <Weather />
-            <div className="text-white mt-5 mb-5">
+            {/* <div className="text-white mt-5 mb-5">
               <h2 className="create-account mb-3">Welcome Back</h2>
               <p>
                 Thank you for joining. Updates and new features are released
                 daily.
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

@@ -1,9 +1,8 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getAllHouse} from "../../redux/services/HouseService";
-import {Link} from "react-router-dom";
 import { getAllCategories } from "../../redux/services/CategoryService";
-import {getImageByHouseId} from "../../redux/services/ImageService";
+import House from "./House";
 
 function ListHouse() {
     const dispatch = useDispatch();
@@ -18,7 +17,10 @@ function ListHouse() {
     }, [])
     return (
         <>
-<form className="hero-form form">
+            <form className="hero-form form" style={{paddingTop:"50px"}}>
+                <div style={{marginTop:"0px"}}>
+                    <h2 style={{color:"#FF0000"}}>HÃY THUÊ VÀ CHO THUÊ THEO CÁCH CỦA BẠN</h2>
+                </div>
                 <div className="container">
                     <div className="main-search-form">
                         <div className="form-row">
@@ -146,41 +148,7 @@ function ListHouse() {
 
                         {houses && houses.map((item) => {
                                 return (
-                                    <div className="item" key={item.id}>
-                                        {/*<div className="ribbon-featured">Featured</div>*/}
-                                        <div className="wrapper">
-                                            <div className="image">
-                                                <h3>
-                                                <a href="#" className="tag category">{item.category.name}</a>
-                                                <Link to={`${item.id}`} className="title">{item.name}</Link>
-                                                    <span className="tag">Offer</span>
-                                                </h3>
-                                                <Link to={`${item.id}`}
-                                                      className="image-wrapper background-image">
-                                                    <img src="https://img.freepik.com/free-vector/beautiful-home_24877-50819.jpg" alt=""/>
-                                                </Link>
-                                            </div>
-                                            <h4 className="location">
-                                                <a href="#">{item.location}</a>
-                                            </h4>
-                                            <div className="price">${item.price}</div>
-                                            <div className="meta">
-                                                <figure>
-                                                    <i className="fa fa-calendar-o"></i>02.05.2017
-                                                </figure>
-                                                <figure>
-                                                    <a href="#">
-                                                        <i className="fa fa-user"></i>Jane Doe
-                                                    </a>
-                                                </figure>
-                                            </div>
-                                            <div className="description">
-                                            <p>{item.description}</p>
-                                            </div>
-                                            <Link to={`${item.id}`} href="single-listing-1.html"
-                                                  className="detail text-caps underline">Detail</Link>
-                                        </div>
-                                    </div>
+                                    <House item={item}/>
 
                                 )
                             })}

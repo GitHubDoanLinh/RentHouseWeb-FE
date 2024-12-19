@@ -3,7 +3,7 @@ export default function FormUpdate({ image, onRemove }) {
         <>
             <div className="preview-wrapper">
                 <img
-                    src={URL.createObjectURL(image)}
+                    src={image}
                     alt={`Preview`}
                     style={{ maxWidth: '100px', maxHeight: '100px', margin: '5px' }}
                 />

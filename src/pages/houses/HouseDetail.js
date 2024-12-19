@@ -25,8 +25,7 @@ export default function HouseDetail() {
         dispatch(getById(id)).then(() => dispatch(getImageByHouseId(id)).then(() => setFetched(true)))
     }, []);
     const carouselItemStyle = {
-        height: '720px', // Adjust the height to your preference
-        // You can add more styling properties as needed
+        height: '720px',
     };
 
     return (
