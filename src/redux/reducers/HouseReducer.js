@@ -22,9 +22,6 @@ const initialState = {
     category: {
       id: 0,
     },
-    user: {
-      id: 0,
-    },
     convenients: [],
   },
   listByUser: [],
