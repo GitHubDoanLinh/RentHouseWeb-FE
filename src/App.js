@@ -19,6 +19,7 @@ import { useSelector } from "react-redux";
 import { UpdateHouse } from "./pages/houses/update/UpdateHouse";
 import ManagerHouse from "./pages/user/managerHouse/ManagerHouse";
 import ShowFormImageUpdate from "./pages/houses/update/ShowUpdateImage";
+import HistoryBuy from "./pages/user/profile/HistoryBuy";
 function App() {
   const currentUser = useSelector(({users}) => {
       return users.currentToken;
@@ -45,7 +46,8 @@ function App() {
                             <Route path={'profile'} element={<Profile/>}>
                                 <Route path={`profile-detail/:id`} element={<ProfileDetail/>}/>
                                 <Route path={"change-password"} element={<ChangePassword/>}/>
-                                <Route path={"bookmarks"} element={<Bookmarks/>}/>                               
+                                <Route path={"bookmarks"} element={<Bookmarks/>}/>
+                                <Route path={"history"} element={<HistoryBuy/>}/>                               
                             </Route>
                             <Route path={"manager-house"} element={<ManagerHouse/>}>
                                 <Route path={"list-house-user/:id"} element={<ListHouseOfUser/>}/>

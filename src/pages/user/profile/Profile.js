@@ -25,9 +25,9 @@ function Profile() {
                                         <i className="fa fa-heart"></i>
                                         <Link to={"/user/profile/bookmarks"}>Bookmarks</Link>
                                     </a>
-                                    <a className="nav-link icon" href="sold-items.html">
+                                    <Link to={"/user/profile/history"} className="nav-link icon" href="">
                                         <i className="fa fa-check"></i>History Buy (Order)
-                                    </a>
+                                    </Link>
                                     
                                 </nav>
                             </div>
