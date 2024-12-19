@@ -48,26 +48,7 @@ export default function ListHouseOfUser() {
               <option value="4">Highest Price First</option>
             </select>
           </div>
-          <div className="float-right d-xs-none thumbnail-toggle">
-            <a
-              href="#"
-              className="change-class"
-              data-change-from-class="list"
-              data-change-to-class="grid"
-              data-parent-class="items"
-            >
-              <i className="fa fa-th"></i>
-            </a>
-            <a
-              href="#"
-              className="change-class active"
-              data-change-from-class="grid"
-              data-change-to-class="list"
-              data-parent-class="items"
-            >
-              <i className="fa fa-th-list"></i>
-            </a>
-          </div>
+          
         </div>
 
         <div className="items list compact grid-xl-3-items grid-lg-2-items grid-md-2-items">
