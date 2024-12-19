@@ -28,6 +28,9 @@ export function UpdateHouse() {
   });
   const [fetched, setFetched] = useState(false);
   const { id } = useParams();
+  const currentUserId = useSelector(({users}) => {
+    return users.currentToken.id;
+})
   useEffect(() => {
     const fetchData = async () => {
       await dispatch(getAllConvenient());
@@ -40,14 +43,12 @@ export function UpdateHouse() {
   const convenients = useSelector(({ convenients }) => {
     return convenients.listConvenient;
   });
-  console.log(convenients);
 
   const save = (values) => {
     // values.convenients.map(Number)
-    let convenientIds = values.convenients.map(Number);
+    let convenientIds = values.convenients.map(item => item.id);
     values = (({ convenients, ...value }) => value)(values);
     values = { ...values, convenientIds };
-    console.log(values);
     dispatch(update(values)).then(() => {
       navigate("/user");
     });
@@ -55,7 +56,6 @@ export function UpdateHouse() {
   const houses = useSelector(({ houses }) => {
     return houses.houseUpdate;
   });
-  console.log(houses);
 
   const categories = useSelector(({ categories }) => {
     return categories.listCategories;
@@ -158,15 +158,13 @@ export function UpdateHouse() {
                       </div>
                     </div>
                     <div className="row">
-                      <Field name="user.id" type="hidden" value={1} />
+                      <Field name="user.id" type="hidden" value={currentUserId}/>
                     </div>
                     <div className="row input-checkbox">
                       {convenients.map((convenient) => {
                         return (
                           <CustomCheckboxField
-                            defaultChecked={houses.convenients.includes(
-                              "" + convenient.id
-                            )}
+                            defaultChecked={houses.convenients.map(item=>item.id).includes(convenient.id)}
                             key={convenient.id}
                             name="convenients"
                             value={convenient.id}

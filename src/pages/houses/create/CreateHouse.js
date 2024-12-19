@@ -25,7 +25,6 @@ export default function CreateHouse() {
   const currentUserId = useSelector(({ users }) => {
     return users.currentToken.id;
   });
-  console.log(currentUserId);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

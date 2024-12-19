@@ -48,7 +48,7 @@ export default function HouseDetail() {
                     </div>
                 </div>
                 <section className="content">
-                    <section className="block">
+                    <section className="block" style={{paddingTop:"0"}}>
                         <div className="container">
                             <section>
                                 {/* Main Carousel */}
@@ -73,8 +73,8 @@ export default function HouseDetail() {
                                             return rows;
                                         }, []).map((row, rowIndex) => (                                          
                                             <div key={rowIndex}
-                                                 className={`carousel-item ${rowIndex === 0 ? 'active' : ''}`}>
-                                                <div className="row">
+                                                className={`carousel-item ${rowIndex === 0 ? 'active' : ''}`}  >
+                                                <div className="row" style={{marginLeft:"0.1rem"}}>
                                                     {row.map((thumb, thumbIndex) => (
                                                         <div
                                                             key={thumbIndex}
@@ -82,6 +82,7 @@ export default function HouseDetail() {
                                                             data-slide-to={(rowIndex * 3) + thumbIndex}
                                                             className={`thumb col-sm-4 ${activeIndex === (rowIndex * 3) + thumbIndex ? 'active' : ''}`}
                                                             onClick={() => handleThumbnailClick((rowIndex * 3) + thumbIndex)}
+                                                            style={{maxWidth:"20%",marginTop:"12px"}}
                                                         >
                                                          
                                                             <img src={thumb.image}
