@@ -29,8 +29,8 @@ export default function HouseDetail() {
     };
 
     return (
-        <>
-            {fetched && <div className="page sub-page">
+        <>{fetched &&
+            <div className="page sub-page" >
                 <div className="hero" style={{backgroundColor: "#f2f2f2"}}>
                     <div className="hero-wrapper">
                         <div className="page-title">
@@ -71,9 +71,9 @@ export default function HouseDetail() {
                                             if (index % 3 === 0) rows.push([]);
                                             rows[rows.length - 1].push(item);
                                             return rows;
-                                        }, []).map((row, rowIndex) => (                                          
+                                        }, []).map((row, rowIndex) => (
                                             <div key={rowIndex}
-                                                className={`carousel-item ${rowIndex === 0 ? 'active' : ''}`}  >
+                                                 className={`carousel-item ${rowIndex === 0 ? 'active' : ''}`}  >
                                                 <div className="row" style={{marginLeft:"0.1rem"}}>
                                                     {row.map((thumb, thumbIndex) => (
                                                         <div
@@ -81,10 +81,9 @@ export default function HouseDetail() {
                                                             data-target="#myCarousel"
                                                             data-slide-to={(rowIndex * 3) + thumbIndex}
                                                             className={`thumb col-sm-4 ${activeIndex === (rowIndex * 3) + thumbIndex ? 'active' : ''}`}
-                                                            onClick={() => handleThumbnailClick((rowIndex * 3) + thumbIndex)}
-                                                            style={{maxWidth:"20%",marginTop:"12px"}}
+                                                            onClick={() => handleThumbnailClick((rowIndex * 3) + thumbIndex)}                                                
+                                                            style={{maxWidth:"fit-content",marginTop:"12px"}}
                                                         >
-                                                         
                                                             <img src={thumb.image}
                                                                  alt={`thumbnail_${(rowIndex * 3) + thumbIndex}`}/>
                                                         </div>
@@ -92,13 +91,11 @@ export default function HouseDetail() {
                                                 </div>
                                             </div>
                                         ))}
-                                       
                                         <a className="carousel-control-prev" href="#thumbSlider" role="button"
                                            data-slide="prev">
                                             <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                                             <span className="sr-only">Previous</span>
                                         </a>
-                                      
                                         <a className="carousel-control-next" href="#thumbSlider" role="button"
                                            data-slide="next">
                                             <span className="carousel-control-next-icon" aria-hidden="true"></span>
@@ -111,11 +108,9 @@ export default function HouseDetail() {
                             </section>
                             <div className="row flex-column-reverse flex-md-row">
                                 <div className="col-md-8">
-                                    
                                     <section><h2>Description</h2> <p> {houseDetail.description} </p></section>
                                     <section><h2>Details</h2>
                                         <dl className="columns-3">
-                                           
                                             <dt>BedRoom</dt>
                                             <dd>{houseDetail.bedRoom}</dd>
                                             <dt>BathRoom</dt>
@@ -128,106 +123,18 @@ export default function HouseDetail() {
                                             <dd>{houseDetail.category.name}</dd>
                                         </dl>
                                     </section>
+                                    <section><h2>Convenients</h2>
+                                        <ul className="features-checkboxes columns-3">
+                                            {houseDetail.convenients.map((item) =>
+                                                <li>{item.name}</li>
+                                            )}
+
+                                        </ul>
+                                    </section>
                                     <section><h2>Location</h2>
                                         <div className="map height-300px" id="map-small"></div>
                                     </section>
-                                    <section><h2>Convenients</h2>
-                                        <ul className="features-checkboxes columns-3">
-                                         
-                                            {houseDetail.convenients.map((item) =>
-                                                <li>{item.name}</li>
-                                                )}
-                                        </ul>
-                                    </section>
                                     <hr/>
-                                    <section><h2>Similar Ads</h2>
-                                        <div className="items list compact">
-                                            <div className="item">
-                                                <div className="ribbon-featured">Featured</div>
-                                                <div className="wrapper">
-                                                    <div className="image"><h3><a href="#" className="tag category">Home
-                                                        & Decor</a> <a href="single-listing-1.html" className="title">Furniture
-                                                        for sale</a> <span className="tag">Offer</span></h3> <a
-                                                        href="single-listing-1.html"
-                                                        className="image-wrapper background-image"> <img
-                                                        src="assets/img/image-01.jpg" alt=""/> </a></div>
-                                                    <h4 className="location"><a href="#">Manhattan, NY</a></h4>
-                                                    <div className="price">$80</div>
-                                                    <div className="meta">
-                                                        <figure><i className="fa fa-calendar-o"></i>02.05.2017</figure>
-                                                        <figure><a href="#"> <i className="fa fa-user"></i>Jane Doe </a>
-                                                        </figure>
-                                                    </div>
-                                                    <div className="description"><p>Lorem ipsum dolor sit amet,
-                                                        consectetur adipiscing elit. Nullam venenatis lobortis</p></div>
-                                                    <a href="single-listing-1.html"
-                                                       className="detail text-caps underline">Detail</a></div>
-                                            </div>
-                                            <div className="item">
-                                                <div className="wrapper">
-                                                    <div className="image"><h3><a href="#"
-                                                                                  className="tag category">Education</a>
-                                                        <a href="single-listing-1.html" className="title">Creative
-                                                            Course</a> <span className="tag">Offer</span></h3> <a
-                                                        href="single-listing-1.html"
-                                                        className="image-wrapper background-image"> <img
-                                                        src="assets/img/image-02.jpg" alt=""/> </a></div>
-                                                    <h4 className="location"><a href="#">Nashville, TN</a></h4>
-                                                    <div className="price">$125</div>
-                                                    <div className="meta">
-                                                        <figure><i className="fa fa-calendar-o"></i>28.04.2017</figure>
-                                                        <figure><a href="#"> <i className="fa fa-user"></i>Peter Browner
-                                                        </a></figure>
-                                                    </div>
-                                                    <div className="description"><p>Proin at tortor eros. Phasellus
-                                                        porta nec elit non lacinia. Nam bibendum erat at leo faucibus
-                                                        vehicula. Ut laoreet porttitor risus, eget suscipit tellus
-                                                        tincidunt sit amet. </p></div>
-                                                    <div className="additional-info">
-                                                        <ul>
-                                                            <li>
-                                                                <figure>Start Date</figure>
-                                                                <aside>25.06.2017 09:00</aside>
-                                                            </li>
-                                                            <li>
-                                                                <figure>Length</figure>
-                                                                <aside>2 months</aside>
-                                                            </li>
-                                                            <li>
-                                                                <figure>Bedrooms</figure>
-                                                                <aside>3</aside>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <a href="single-listing-1.html"
-                                                       className="detail text-caps underline">Detail</a></div>
-                                            </div>
-                                            <div className="item">
-                                                <div className="wrapper">
-                                                    <div className="image"><h3><a href="#"
-                                                                                  className="tag category">Adventure</a>
-                                                        <a href="single-listing-1.html" className="title">Into The
-                                                            Wild</a> <span className="tag">Ad</span></h3> <a
-                                                        href="single-listing-1.html"
-                                                        className="image-wrapper background-image"> <img
-                                                        src="assets/img/image-03.jpg" alt=""/> </a></div>
-                                                    <h4 className="location"><a href="#">Seattle, WA</a></h4>
-                                                    <div className="price">$1,560</div>
-                                                    <div className="meta">
-                                                        <figure><i className="fa fa-calendar-o"></i>21.04.2017</figure>
-                                                        <figure><a href="#"> <i className="fa fa-user"></i>Peak Agency
-                                                        </a></figure>
-                                                    </div>
-                                                    <div className="description"><p>Nam eget ullamcorper massa. Morbi
-                                                        fringilla lectus nec lorem tristique gravida</p></div>
-                                                    <a href="single-listing-1.html"
-                                                       className="detail text-caps underline">Detail</a></div>
-                                            </div>
-                                            <div className="center"><a href="#"
-                                                                       className="btn btn-primary text-caps btn-framed">Show
-                                                All</a></div>
-                                        </div>
-                                    </section>
                                 </div>
                                 <div className="col-md-4">
                                     <aside className="sidebar">
@@ -235,8 +142,8 @@ export default function HouseDetail() {
                                             <div className="box">
                                                 <div className="author">
                                                     <div className="author-image">
-                                                        <div className="background-image"><img
-                                                            src="assets/img/author-01.jpg" alt=""/></div>
+                                                        <div className="background-image"><img                                                   
+                                                            src={houseDetail.userDTO.imageUser} alt=""/></div>
                                                     </div>
                                                     <div className="author-description">
                                                         <h3>{houseDetail.userDTO.fullName}</h3>

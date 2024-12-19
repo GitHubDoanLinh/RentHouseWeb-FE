@@ -6,14 +6,16 @@ import { storage } from "./FireBaseConfig";
 import ImagePreview from "../components/UI/ImagePreview";
 import "./uploadImageStyle.css";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { add } from "../redux/services/HouseService";
 const ImageUploadForm = () => {
   const location = useLocation();
   const propsReceived = location.state;
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const currentUserId = useSelector(({users}) => {
+    return users.currentToken.id;
+})
   return (
   
     <Formik
@@ -36,8 +38,7 @@ const ImageUploadForm = () => {
         }
         let data = { ...propsReceived, images };
         await dispatch(add(data)).then(() => {
-          console.log(data)
-          navigate("/user/house");
+          navigate(`/user/manager-house/list-house-user/${currentUserId}`);
         });
       }}
     >

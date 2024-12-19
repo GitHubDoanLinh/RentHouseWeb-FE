@@ -1,50 +1,55 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-import { addImages, getImageByHouseId, removeImageById } from "../../../redux/services/ImageService";
-import FormUpdate from "./ImageUpdate";
-import { Formik } from "formik";
 import ImagePreview from "../../../components/UI/ImagePreview";
+import React, {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate, useParams} from "react-router-dom";
+import {addImages, getImageByHouseId, removeImageById} from "../../../redux/services/ImageService";
+import FormUpdate from "./ImageUpdate";
+import {getDownloadURL, ref, uploadBytes} from "firebase/storage";
 import {storage} from "../../../firebase/FireBaseConfig";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import {v4 as uuidv4} from "uuid";
-
+import {Formik} from "formik";
+import {id} from "date-fns/locale";
+import {toast} from "react-toastify";
 
 export default function ShowFormImageUpdate () {
+    const currentUserId = useSelector(({users}) => {
+        return users.currentToken.id;
+    })
     const navigate = useNavigate();
-    const {idHouse} = useParams()
+    const {id} = useParams()
     const dispatch = useDispatch();
     const images = useSelector(({images}) => {
         return images.listImage;
     })
-
-    if (idHouse) {
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        useEffect(() => {
-            dispatch(getImageByHouseId(idHouse)).then(() => {
-                console.log(images);
-            });
-        }, []);
-    }
-
+    useEffect(() => {
+        dispatch(getImageByHouseId(id))
+    }, []);
     function handleDelete(idImage) {
         // eslint-disable-next-line no-restricted-globals
-        let isConfirmed = confirm("Are you sure you want to delete");
+        let isConfirmed = confirm("Are you sure you want to delete this image ?");
         // eslint-disable-next-line no-restricted-globals
         if (isConfirmed)    {
-            dispatch(removeImageById(idImage)).then(()=> {
-                alert("Oke")
-                dispatch(getImageByHouseId(idHouse))
+            dispatch(removeImageById(idImage)).then((data)=> {
+                if (data.error) {
+                    toast.error(`Delete Image Failure (${data.error.message})!`, {
+                        position: "top-right"
+                    });
+                } else {
+                    toast.success(`Delete Image Successfully!`, {
+                        position: "top-right"
+                    });
+                    dispatch(getImageByHouseId(id))
+                }
+
             })
         }
         else {
             alert("Oke la")
         }
     }
-
-
     return (
         <>
+            <div className="col-md-9 image-div">
             <div><h3>Click vào góc phải ảnh để xoá ảnh</h3></div>
             <div className="row" style={{display: 'flex'}}>
                 <div className="col-8">
@@ -72,7 +77,6 @@ export default function ShowFormImageUpdate () {
                         console.warn('No images selected');
                         return;
                     }
-                    console.log(imagesToUpload)
                     const imageList = [];
                     for (const image of imagesToUpload) {
                         const imageRef = ref(storage, `images/${image.name + uuidv4()}`);
@@ -81,12 +85,20 @@ export default function ShowFormImageUpdate () {
                         imageList.push(imageUrl);
                     }
                     const data =[];
-                    data.push(idHouse);
+                    data.push(id);
                     data.push(imageList)
-                    console.log(data)
-                    await dispatch(addImages(data)).then(() => {
-                        console.log(imageList)
-                        navigate('/user');
+                    await dispatch(addImages(data)).then((data) => {
+                        if (data.error) {
+                            toast.error(`Add Image Failure (${data.error.message})!`, {
+                                position: "top-right"
+                            });
+                        } else {
+                            toast.success(`Add Image Successfully!`, {
+                                position: "top-right"
+                            });
+                            navigate(`/manager-house/list-house-user/${currentUserId}`);
+                        }
+
                     });
                 }}
             >
@@ -112,6 +124,8 @@ export default function ShowFormImageUpdate () {
                                 Upload
                             </button>
                         </div>
+
+
                         <div className="row" style={{display: 'flex'}}>
                             <div className="col-8">
                                 <div className="row">
@@ -132,6 +146,8 @@ export default function ShowFormImageUpdate () {
                     </form>
                 )}
             </Formik>
+            </div>
+
         </>
     )
 }
