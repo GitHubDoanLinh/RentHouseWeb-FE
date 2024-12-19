@@ -12,6 +12,7 @@ export const add = createAsyncThunk(
     'houses/add',
     async (newHouse) => {
         let response = await getAxios().post('houses/create',newHouse);
+        console.log(response)
         return response.data;
     }
 )

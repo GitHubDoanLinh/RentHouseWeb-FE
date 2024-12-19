@@ -27,7 +27,8 @@ const initialState = {
     },
     convenients: [],
   },
-  listByUser: []
+  listByUser: [],
+  message:""
 };
 
 const houseSlice = createSlice({
@@ -38,7 +39,9 @@ const houseSlice = createSlice({
       state.list = payload;
     });
     builder.addCase(add.fulfilled, (state, { payload }) => {
-      state.list.push(payload);
+      console.log(payload)
+      // state.list.push(payload);
+      state.message=payload.message;
     });
     builder.addCase(getById.fulfilled, (state, { payload }) => {
       state.houseUpdate = (payload);
