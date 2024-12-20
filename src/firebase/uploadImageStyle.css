@@ -17,7 +17,7 @@ h3 {
     margin-top: 20px;
     text-align: center;
     margin-bottom: 20px;
-    color: #d38e8e;
+    color: #e72828;
 }
 input[type="file"] {
     display: none;
@@ -67,4 +67,8 @@ input[type="file"] {
 }
 .delete-preview:hover {
     background-color: #bbbbbb;
+}
+.image-div{
+    padding-top: 10px;
+    /*margin-left: 1rem !important;*/
 }

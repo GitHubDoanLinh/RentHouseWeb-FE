@@ -7,6 +7,8 @@ import {
 } from "../../../redux/services/HouseService";
 import { Link, useParams } from "react-router-dom";
 import HouseOfUser from "./HouseOfUser";
+import "./houses_user.css"
+
 export default function ListHouseOfUser() {
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -31,7 +33,7 @@ export default function ListHouseOfUser() {
 
   return (
     <>
-      <div className="col-md-9">
+      <div className="col-md-9 houses-user">
         <div className="section-title clearfix">
           <div className="float-left float-xs-none">
             {/* <label className="mr-3 align-text-bottom">Sort by: </label> */}

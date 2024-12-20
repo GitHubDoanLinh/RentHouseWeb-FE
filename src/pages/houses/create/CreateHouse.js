@@ -32,7 +32,7 @@ export default function CreateHouse() {
     const propsToPass = {
       data: values,
     };
-    navigate("convenient", {
+    navigate("/manager-house/convenient", {
       state: propsToPass,
       replace: true,
     });
@@ -46,7 +46,6 @@ export default function CreateHouse() {
 
   return (
     <>
-      <h2>ADD HOUSE</h2>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <Formik
           initialValues={{
@@ -68,8 +67,9 @@ export default function CreateHouse() {
           onSubmit={handleNext}
           validationSchema={addSchema}
         >
-          <div className="main-formAdd">
+          <div className="col-md-9 main-formAdd" style={{marginLeft:"6rem"}}>
             <Form>
+            <h3>ADD NEW HOUSE</h3>
               <div className="formAdd">
                 <div className="row">
                   <div className="col-4">
