@@ -9,7 +9,7 @@ function House({item}) {
             // console.log(response)
             setImages(response.data)
         })
-    }, []);
+    }, [item]);
     return (
         <>
             <div className="item" key={item.id}>
