@@ -181,7 +181,7 @@ export default function HouseDetail() {
                                             <dt>Kitchen</dt>
                                             <dd>{houseDetail.kitchen}</dd>
                                             <dt>Category</dt>
-                                            <dd>{houseDetail.category.name}</dd>
+                                            <dd>{houseDetail?.category?.name}</dd>
                                         </dl>
                                     </section>
                                     <section><h2>Convenients</h2>

@@ -29,15 +29,15 @@ function NavbarUser() {
                                           className="nav-link">Wishlist</Link>
                                 </li>
                                 <li className="nav-item has-child">
-                                    <Link to={`/user/profile/profile-detail/${currentUser.id}`} className="nav-link" href="#">Your
+                                    <Link to={`profile/profile-detail/${currentUser.id}`} className="nav-link" href="#">Your
                                         Profile</Link>
                                     <ul className="child">
                                         <li className="nav-item has-child">
-                                        <Link to={`/user/profile/profile-detail/${currentUser.id}`} href="#"
+                                            <Link to={`profile/profile-detail/${currentUser.id}`} href="#"
                                                   className="nav-link">Profile</Link>
                                         </li>
                                         <li className="nav-item has-child">
-                                            <Link to={`/user/manager-house/list-house-user/${currentUser.id}`} href="#" className="nav-link">Manager House</Link>
+                                            <Link to={`manager-house/list-house-user/${currentUser.id}`} href="#" className="nav-link">Manager House</Link>
                                         </li>
                                         <li className="nav-item has-child">
                                             <Link to={""} href="#" className="nav-link">Message</Link>

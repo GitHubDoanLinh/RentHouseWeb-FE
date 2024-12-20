@@ -38,7 +38,7 @@ const ImageUploadForm = () => {
         }
         let data = { ...propsReceived, images };
         await dispatch(add(data)).then(() => {
-          navigate(`/user/manager-house/list-house-user/${currentUserId}`);
+          navigate(`manager-house/list-house-user/${currentUserId}`);
         });
       }}
     >

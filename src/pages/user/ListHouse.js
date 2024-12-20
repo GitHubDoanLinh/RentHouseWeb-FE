@@ -3,6 +3,7 @@ import {useEffect} from "react";
 import {getAllHouse} from "../../redux/services/HouseService";
 import { getAllCategories } from "../../redux/services/CategoryService";
 import House from "./House";
+import { Navigate } from "react-router-dom";
 
 function ListHouse() {
     const dispatch = useDispatch();
@@ -16,6 +17,13 @@ function ListHouse() {
         dispatch(getAllHouse());
 
     }, [])
+
+    const currentUser = useSelector(({users}) => {
+        return users.currentToken;
+    });
+    if (!currentUser) {
+        return <Navigate to="/login"/>
+    }
     return (
         <>
             <form className="hero-form form" style={{paddingTop:"50px"}}>

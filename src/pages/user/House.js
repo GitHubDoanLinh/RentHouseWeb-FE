@@ -17,7 +17,7 @@ function House({item}) {
                 <div className="wrapper">
                     <div className="image">
                         <h3>
-                            <a href="#" className="tag category">{item.category.name}</a>
+                            <a href="#" className="tag category">{item?.category?.name}</a>
                             <Link to={`${item.id}`} className="title">
                                 {item.name}</Link>
                             <span className="tag">Offer</span>

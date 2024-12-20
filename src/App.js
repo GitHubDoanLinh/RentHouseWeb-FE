@@ -20,56 +20,70 @@ import { UpdateHouse } from "./pages/houses/update/UpdateHouse";
 import ManagerHouse from "./pages/user/managerHouse/ManagerHouse";
 import ShowFormImageUpdate from "./pages/houses/update/ShowUpdateImage";
 import HistoryBuy from "./pages/user/profile/HistoryBuy";
+import { ToastContainer } from "react-toastify";
 function App() {
-  const currentUser = useSelector(({users}) => {
-      return users.currentToken;
-  })
-  const id = useSelector(({users}) => {
-    return users.userId;
-})
-  return (
-      <>
-          <Routes>
-              <Route path={"login"} element={<Login/>}/>
-              <Route path={"register"} element={<Register/>}/>
-              {
-                  currentUser ? (
-                      <>
-                          <Route path={'user'} element={<UserPage/>}>
-                            <Route path={'house'} element={<ListHouse/>}/>
-                            <Route path={'images/:idHouse'} element={<ShowFormImageUpdate/>}/>
-                            <Route path={'house/:id'} element={<HouseDetail/>}/>
-                            <Route path={'create'} element={<CreateHouse/>}/>
-                            <Route path={'addImage'} element={<ImageUpload/>}/>
-                            <Route path={'convenient'} element={<CreateConvenient/>}/>
-                            <Route path={'houseupdate/:id'} element={<UpdateHouse/>}/>
-                            <Route path={'profile'} element={<Profile/>}>
-                                <Route path={`profile-detail/:id`} element={<ProfileDetail/>}/>
-                                <Route path={"change-password"} element={<ChangePassword/>}/>
-                                <Route path={"bookmarks"} element={<Bookmarks/>}/>
-                                <Route path={"history"} element={<HistoryBuy/>}/>                               
-                            </Route>
-                            <Route path={"manager-house"} element={<ManagerHouse/>}>
-                                <Route path={"list-house-user/:id"} element={<ListHouseOfUser/>}/>
-                            </Route>
-                            
-                          </Route>
-                          <Route path={'admin'} element={<Home/>}>
-                              <Route path={'users'} element={<UserManager/>}/>
-                              <Route path={'houses'} element={<HouseManager/>}/>
-                          </Route>
-                        
+    const currentUser = useSelector(({users}) => {
+        return users.currentToken;
+    })
+    const id = useSelector(({users}) => {
+        return users.userId;
+    })
 
-                      </>
-                  ) : (
-                      <>
-                          <Route path='*' element={<Navigate to="login"/>}/>
-                      </>
-                  )
-              }
-          </Routes>
-      </>
-  );
+    return (
+        <>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
+            {/* Same as */}
+            <ToastContainer />
+            <Routes>
+                <Route path="/" element={<Navigate to="login"/>} />
+                {
+                    currentUser ? (
+                        <>
+                            <Route element={<UserPage/>}>
+                                <Route path={'house'} element={<ListHouse/>}/>
+                                <Route path={'images/:idHouse'} element={<ShowFormImageUpdate/>}/>
+                                <Route path={'house/:id'} element={<HouseDetail/>}/>
+                                <Route path={'create'} element={<CreateHouse/>}/>
+                                <Route path={'addImage'} element={<ImageUpload/>}/>
+                                <Route path={'convenient'} element={<CreateConvenient/>}/>
+                                <Route path={'houseupdate/:id'} element={<UpdateHouse/>}/>
+                                <Route path={'profile'} element={<Profile/>}>
+                                    <Route path={"change-password"} element={<ChangePassword/>}/>
+                                    <Route path={`profile-detail/:id`} element={<ProfileDetail/>}/>
+                                    <Route path={"bookmarks"} element={<Bookmarks/>}/>
+                                    <Route path={"history"} element={<HistoryBuy/>}/>
+                                </Route>
+                                <Route path={"manager-house"} element={<ManagerHouse/>}>
+                                    <Route path={"list-house-user/:id"} element={<ListHouseOfUser/>}/>
+                                </Route>
+                            </Route>
+                            <Route path={'admin'} element={<Home/>}>
+                                <Route path={'users'} element={<UserManager/>}/>
+                                <Route path={'houses'} element={<HouseManager/>}/>
+                            </Route>
+                            <Route path='*' element={<Navigate to="house"/>}/>
+                        </>
+                    ) : (
+                        <>
+                            <Route path={"login"} element={<Login/>}/>
+                            <Route path={"register"} element={<Register/>}/>
+                        </>
+                    )
+                }
+            </Routes>
+        </>
+    );
 }
 
 export default App;

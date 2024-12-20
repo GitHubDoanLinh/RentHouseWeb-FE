@@ -16,15 +16,15 @@ export default function ManagerHouse() {
                                 <nav className="nav flex-column side-nav">
                                     <a className="nav-link icon" href="">
                                         <i className="fa fa-star"></i>
-                                        <Link to={`/user/manager-house/list-house-user/${currentUser.id}`}>My Ads Listing</Link>
+                                        <Link to={`manager-house/list-house-user/${currentUser.id}`}>My Ads Listing</Link>
                                     </a>
                                     <a className="nav-link icon" href="">
                                         <i className="fa fa-star"></i>
-                                        <Link to={"/user/create"}>Add House</Link>
+                                        <Link to={"create"}>Add House</Link>
                                     </a>
                                     <a className="nav-link icon" href="">
                                         <i className="fa fa-check"></i>
-                                        <Link to={"/user/addImage"}>Sold Items</Link>
+                                        <Link to={"addImage"}>Sold Items</Link>
                                     </a>
                                 </nav>
                             </div>

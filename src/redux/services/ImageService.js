@@ -21,7 +21,7 @@ export const addImages = createAsyncThunk(
 
 export const getImageByHouseId = createAsyncThunk(
     "images/getImageByHouseId",
-    async (idHouse) => {
+    async (idHouse) => {    
         let res = await getAxios().get("images/" + idHouse);
         return res.data
     }

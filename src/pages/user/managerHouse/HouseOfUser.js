@@ -22,10 +22,10 @@ function HouseOfUser({item, handleDelete}) {
                     <div className="image">
                         <h3 style={{top:"-4px"}}>
                             <a href="single-listing-1.html" className="title" style={{float:"left"}}>{item.name}</a>
-                            <a href="#" className="tag category" >{item.category.name}</a>
+                            <a href="#" className="tag category" >{item?.category?.name}</a>
                             <span className="tag" style={{float:"left",marginLeft:"4px"}}>Offer</span>
                         </h3>
-                        <Link to={`/user/house/${item.id}`}
+                        <Link to={`house/${item.id}`}
                            className="image-wrapper background-image">
                             <img src={images && images.length > 0 ? images[0].image : ""} alt=""/>
                         </Link>
@@ -35,10 +35,10 @@ function HouseOfUser({item, handleDelete}) {
                     </h4>
                     <div className="price">{item.price} VND</div>
                     <div className="admin-controls">
-                        <Link to={`/user/houseupdate/${item.id}`}>
+                        <Link to={`houseupdate/${item.id}`}>
                             <i className="fa fa-pencil"></i>EDIT
                         </Link>
-                        <Link to={`/user/images/${item.id}`}>
+                        <Link to={`images/${item.id}`}>
                             <i className="fa fa-pencil"></i>EDIT IMAGE</Link>
                         <a
                             onClick={() =>
@@ -51,7 +51,7 @@ function HouseOfUser({item, handleDelete}) {
                     <div className="description">
                         <p>{item.description}</p>
                     </div>
-                    <Link to={`/user/house/${item.id}`} href="single-listing-1.html"
+                    <Link to={`house/${item.id}`} href="single-listing-1.html"
                           className="detail text-caps underline">Detail</Link>
                 </div>
             </div>
