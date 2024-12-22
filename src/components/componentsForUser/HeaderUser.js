@@ -1,9 +1,17 @@
 import NavbarUser from "./NavbarUser";
 import { Link, useNavigate } from "react-router-dom";
 import * as React from "react";
-import { useDispatch } from "react-redux";
 import { logout } from "../../redux/services/UserService";
-function HeaderUser() {
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useRef } from "react";
+import {
+  KnockFeedProvider,
+  NotificationIconButton,
+  NotificationFeedPopover,
+} from "@knocklabs/react-notification-feed";
+import "@knocklabs/react-notification-feed/dist/index.css";
+
+export default function HeaderUser() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const logoutScreen = () => {
@@ -11,6 +19,12 @@ function HeaderUser() {
       navigate("/login");
     });
   };
+  const currentUser = useSelector(({ users }) => {
+    return users.currentToken;
+  });
+
+  const [isVisible, setIsVisible] = useState(false);
+  const notifButtonRef = useRef(null);
   return (
     <>
       <header className="hero">
@@ -20,38 +34,61 @@ function HeaderUser() {
               <ul className="left">
                 <li>
                   <span>
-                    <i className="fa fa-phone"></i> +1 123 456 789
+                    <i className="fa fa-phone"></i> +84 868 86 68 86
                   </span>
                 </li>
               </ul>
+
               <ul className="right">
-                <li>
-                  <a href="sign-in.html">
-                    <Link to={"/login"}>
-                      <i className="fa fa-sign-in"></i>Log In
-                    </Link>
-                  </a>
-                </li>
-                <li>
-                  <a href="register.html">
-                    <Link to={"/register"}>
-                      <i className="fa fa-pencil-square-o"></i>Register
-                    </Link>
-                  </a>
-                </li>
-                <li style={{ padding: "8px" }}>
-                  <button
-                    onClick={logoutScreen}
-                    style={{
-                      background: "transparent",
-                      color: "white",
-                      border: "none",
-                      cursor: "pointer",
-                    }}
-                  >
-                    <i className="fa fa-pencil-square-o"></i>Logout
-                  </button>
-                </li>
+                {!currentUser ? (
+                  <>
+                    <li>
+                      <Link to={"/login"}>
+                        <i className="fa fa-sign-in"></i>Đăng nhập
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to={"/register"}>
+                        <i className="fa fa-pencil-square-o"></i>Đăng ký
+                      </Link>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li>
+                      <KnockFeedProvider
+                        apiKey={process.env.REACT_APP_KNOCK_PUBLIC_API_KEY}
+                        feedId={process.env.REACT_APP_KNOCK_FEED_CHANNEL_ID}
+                        userId={String(currentUser.id)}
+                      >
+                        <>
+                          <NotificationIconButton
+                            ref={notifButtonRef}
+                            onClick={(e) => setIsVisible(!isVisible)}
+                          />
+                          <NotificationFeedPopover
+                            buttonRef={notifButtonRef}
+                            isVisible={isVisible}
+                            onClose={() => setIsVisible(false)}
+                          />
+                        </>
+                      </KnockFeedProvider>
+                    </li>
+                    <li style={{ padding: "8px" }}>
+                      <button
+                        onClick={logoutScreen}
+                        style={{
+                          background: "transparent",
+                          color: "white",
+                          border: "none",
+                          cursor: "pointer",
+                        }}
+                      >
+                        <i className="fa fa-pencil-square-o"></i>Đăng xuất
+                      </button>
+                    </li>
+                  </>
+                )}
               </ul>
             </div>
           </div>
@@ -66,5 +103,3 @@ function HeaderUser() {
     </>
   );
 }
-
-export default HeaderUser;

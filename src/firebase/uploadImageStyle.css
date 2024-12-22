@@ -1,74 +1,86 @@
 .btn-save:hover {
-    background-color: #28a745 !important;
+  background-color: #28a745 !important;
 }
+
 .btn-save {
-    border: 1px solid #28a745 !important;
+  border: 1px solid #28a745 !important;
 }
+
 .images_upload {
-    justify-content: center;
-    display: flex;
-    gap: 10px;
-    margin-bottom: 40px;
+  justify-content: center;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 40px;
 }
+
 .title-formAddImage {
-    justify-content: center;
+  justify-content: center;
 }
+
 h3 {
-    margin-top: 20px;
-    text-align: center;
-    margin-bottom: 20px;
-    color: #e72828;
+  margin-top: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #e72828;
 }
+
 input[type="file"] {
-    display: none;
+  display: none;
 }
+
 .style-label-uploadImage {
-    box-sizing: border-box;
-    padding: 4px;
-    margin: 0;
-    border: 1px solid #ff0000;
-    background-color: transparent;
-    display: flex;
-    transition: background-color 0.2s ease-in-out;
-    border-radius: 4px;
-    align-items: center;
+  box-sizing: border-box;
+  padding: 4px;
+  margin: 0;
+  border: 1px solid #ff0000;
+  background-color: transparent;
+  display: flex;
+  transition: background-color 0.2s ease-in-out;
+  border-radius: 4px;
+  align-items: center;
 }
+
 .style-label-uploadImage:hover {
-    background-color: #ff0000;
-    color: white;
+  background-color: #ff0000;
+  color: white;
 }
+
 .preview-container {
-    display: flex;
-    max-width: fit-content;
-    margin-bottom: 80px;
+  display: flex;
+  max-width: fit-content;
+  margin-bottom: 80px;
 }
+
 .preview-container:hover .delete-preview {
-    display: flex;
+  display: flex;
 }
+
 .preview-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .delete-preview {
-    position: absolute;
-    top: 4px;
-    right: -4px;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    border: none;
-    background-color: #cecece;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    padding: 4px;
-    display: none;
-    outline: none;
+  position: absolute;
+  top: 4px;
+  right: -4px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: none;
+  background-color: #cecece;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  display: none;
+  outline: none;
 }
+
 .delete-preview:hover {
-    background-color: #bbbbbb;
+  background-color: #bbbbbb;
 }
-.image-div{
-    padding-top: 10px;
-    /*margin-left: 1rem !important;*/
+.image-div {
+  padding-top: 10px;
+  /*margin-left: 1rem !important;*/
 }

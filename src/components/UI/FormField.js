@@ -11,7 +11,6 @@ import {
 } from "@mui/material";
 import {Field, useField} from "formik";
 
-// Khởi tạo theme với cấu hình tuỳ chỉnh
 const theme = createTheme({
     components: {
         MuiTextField: {
@@ -36,19 +35,20 @@ const theme = createTheme({
                 },
             },
             styleOverrides: {
-                shrink: ({ ownerState }) =>
-                    ownerState.shrink && {
-                        fontSize: '1.5rem !important',
-                        top: '0 !important',
-                    },
+                shrink: ({ownerState, theme}) => ({
+                    ...(ownerState.shrink && {
+                        fontSize: "1.5rem !important",
+                        top: "0 !important",
+                    }),
+                }),
             },
         },
         MuiOutlinedInput: {
             defaultProps: {
                 sx: {
                     fontSize: 16,
-                },
-            },
+                }
+            }
         },
         MuiSelect: {
             defaultProps: {
@@ -62,6 +62,7 @@ const theme = createTheme({
                 },
             },
         },
+
         MuiCheckbox: {
             defaultProps: {
                 sx: {
@@ -81,46 +82,49 @@ const theme = createTheme({
                 },
             },
         },
+
+
     },
 });
-
-// Tạo thành phần CustomTextField
-export const CustomTextField = ({ name, label }) => {
+export const CustomTextField = ({name, label}) => {
     return (
         <ThemeProvider theme={theme}>
             <Field
                 name={name}
                 label={label}
-                type="text"
-                as={TextField} // Tùy chỉnh thành TextField của MUI
+                type={"text"}
+                as={TextField}
             />
         </ThemeProvider>
     );
 };
 
-// Tạo thành phần CustomSelectField
-export const CustomSelectField = ({ label, options, name, ...rest }) => {
+
+export const CustomSelectField = ({label, options, name, ...rest}) => {
     return (
         <ThemeProvider theme={theme}>
             <FormControl fullWidth>
                 <InputLabel>{label}</InputLabel>
                 <Field
-                    as={Select} // Tùy chỉnh thành Select của MUI
+                    as={Select}
                     name={name}
                     {...rest}
                 >
                     {options.map((option) => (
+
                         <MenuItem key={option.id} value={option.id}>
                             {option.name}
                         </MenuItem>
                     ))}
                 </Field>
-                {/* <ErrorMessage name={name} component="div" /> */}
+                {/*<ErrorMessage name={name} component="div"/>*/}
             </FormControl>
         </ThemeProvider>
     );
 };
-export const CustomCheckboxField = ({label,defaultChecked, ...props}) => {
+
+
+export const CustomCheckboxField = ({label, defaultChecked,...props}) => {
     const [field] = useField(props);
     return (
         <ThemeProvider theme={theme}>

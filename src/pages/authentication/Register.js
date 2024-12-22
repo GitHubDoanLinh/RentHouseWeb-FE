@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import * as Yup from 'yup';
 import TextField from "@mui/material/TextField";
 import {Button} from "@mui/material";
-import Weather from "../extenstion/Weather";
+import Weather from "../extension/Weather";
 
 export default function Register() {
     const dipatch = useDispatch();
@@ -49,7 +49,7 @@ export default function Register() {
                         <div className="auth-logo text-center mb-2">
                             <div className="row">
                                 <div className="col-md-2">
-                                    <img src={require("../extenstion/img/logo_app.png")} className="logo-img"
+                                    <img src={require("../extension/img/logo_app.png")} className="logo-img"
                                          alt="Logo"/>
                                 </div>
                                 <div className="col-md-7" style={{marginLeft:"10rem"}}>

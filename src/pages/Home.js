@@ -1,17 +1,15 @@
-import { Outlet } from "react-router-dom"
 import Header from "../components/forAdmin/Header";
-import Navbar from "../components/forAdmin/Navbar";
-import Footer from "../components/UI/Footer"
+import {Outlet} from "react-router-dom";
+import Footer from "../components/Footer";
 
-function Home() {
+import Navbar from "../components/forAdmin/Navbar";
+import HeaderUser from "../components/componentsForUser/HeaderUser";
+
+export const Home = () => {
     return (
         <>
-            <Header/>
             <Navbar/>
             <Outlet/>
-            <Footer/>
         </>
     )
 }
-
-export default Home;

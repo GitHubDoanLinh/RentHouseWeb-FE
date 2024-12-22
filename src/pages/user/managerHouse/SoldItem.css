@@ -1,0 +1,8 @@
+#buttonCheckIn{
+    color: green;
+    border-color: green;
+}
+#buttonCheckIn:hover{
+    background-color: green;
+    color: white;
+}

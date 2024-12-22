@@ -1,0 +1,8 @@
+#commentRating{
+    color: green;
+    border-color: green;
+}
+#commentRating:hover{
+    color: white;
+    background-color: green;
+}

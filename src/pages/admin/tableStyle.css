@@ -9,6 +9,15 @@
     justify-content: center;
     display: flex;
 }
-/* button {
-    border-radius: 10%;
-} */
+/*button {*/
+/*    border-radius: 10%;*/
+/*}*/
+#buttonUserInfo{
+    color: #0049e8;
+    border: solid 2px #0049e8;
+    background-color: white;
+}
+#buttonUserInfo:hover{
+    background-color: #0049e8;
+    color: white;
+}

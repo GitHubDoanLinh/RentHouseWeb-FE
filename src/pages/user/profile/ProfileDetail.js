@@ -1,33 +1,28 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux"
-import { useNavigate, useParams } from "react-router-dom";
-import { editDetailUser, getUser } from "../../../redux/services/UserService";
-import { useState } from "react";
-import { toast } from "react-toastify";
-import { Field, Form, Formik } from "formik";
-import { storage } from "../../../firebase/FireBaseConfig";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import {useEffect, useState} from "react";
+import axios from "axios";
+import {useNavigate, useParams} from "react-router-dom";
+import {changeAvartar, editDetailUser, getUser} from "../../../redux/services/UserService";
+import {useDispatch, useSelector} from "react-redux";
+import {Field, Form, Formik} from "formik";
+import {getDownloadURL, ref, uploadBytes} from "firebase/storage";
+import {storage} from "../../../firebase/FireBaseConfig";
 import {v4 as uuidv4} from "uuid";
+import { toast } from 'react-toastify';
 
-function ProfileDetail() {
+export default function ProfileDetail() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const id = useParams();
-
-    useEffect(()=>{
+    const {id} = useParams();
+    useEffect(() => {
         dispatch(getUser(id))
-    },[dispatch, id])
-
+    }, [dispatch, id]);
     const personalInfo = useSelector(({users}) => {
         return users.currentUser;
     })
-
     const [user, setUser] = useState(personalInfo)
-
     useEffect(() => {
         setUser(personalInfo)
     }, [personalInfo]);
-
     const handleSaveChanges = (values, setSubmitting) => {
         const request = {...values, user}
         dispatch(editDetailUser(request))
@@ -42,16 +37,13 @@ function ProfileDetail() {
                             position: "top-right"
                         });
                     }
-                }
-            ).catch(() => {
-                toast.error("Cập nhật thông tin thất bại !", {
-                    position: "top-right"
-                });
-            }).finally(() => setSubmitting(false));
+                }).catch(() => {
+            toast.error("Cập nhật thông tin thất bại !", {
+                position: "top-right"
+            });
+        }).finally(() => setSubmitting(false));
     };
-
     const [loading, setLoading] = useState(false);
-
     const handleUpload = async (e) => {
         setLoading(true)
         const files = e.target.files;
@@ -64,7 +56,6 @@ function ProfileDetail() {
         }
         setLoading(false)
     }
-    
     if (!user && !user.imageUser) {
         return (
             <>
@@ -164,5 +155,3 @@ function ProfileDetail() {
         </>
     )
 }
-
-export default ProfileDetail

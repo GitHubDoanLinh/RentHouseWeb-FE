@@ -1,0 +1,17 @@
+.containerComment{
+    position: relative;
+}
+.centerButtonDeleteComment{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.buttonDeleteComment{
+    width: 70px;
+    height: 40px;
+    margin-top: 10px;
+    padding-top: 10px;
+}

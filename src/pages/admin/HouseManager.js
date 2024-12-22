@@ -1,97 +1,20 @@
-import * as React from "react";
-import "./tableStyle.css";
+import * as React from 'react';
+import './tableStyle.css'
+
+
 
 const houses = [
-  {
-    id: 1,
-    name: "Hotel Luxury",
-    description: "Vippro",
-    price: 100,
-    startTime: "20-12-2222",
-    endTime: "20-12-2222",
-    location: "Ha noi",
-    bedRoom: 2,
-    livingRoom: 1,
-    kitchenRoom: 1,
-    category: "Hotel",
-    image: "xxxxxxxx",
-  },
-  {
-    id: 1,
-    name: "Hotel Luxury",
-    description: "Vippro",
-    price: 100,
-    startTime: "20-12-2222",
-    endTime: "20-12-2222",
-    location: "Ha noi",
-    bedRoom: 2,
-    livingRoom: 1,
-    kitchenRoom: 1,
-    category: "Hotel",
-    image: "xxxxxxxx",
-  },
-  {
-    id: 1,
-    name: "Hotel Luxury",
-    description: "Vippro",
-    price: 100,
-    startTime: "20-12-2222",
-    endTime: "20-12-2222",
-    location: "Ha noi",
-    bedRoom: 2,
-    livingRoom: 1,
-    kitchenRoom: 1,
-    category: "Hotel",
-    image: "xxxxxxxx",
-  },
-  {
-    id: 1,
-    name: "Hotel Luxury",
-    description: "Vippro",
-    price: 100,
-    startTime: "20-12-2222",
-    endTime: "20-12-2222",
-    location: "Ha noi",
-    bedRoom: 2,
-    livingRoom: 1,
-    kitchenRoom: 1,
-    category: "Hotel",
-    image: "xxxxxxxx",
-  },
-  {
-    id: 1,
-    name: "Hotel Luxury",
-    description: "Vippro",
-    price: 100,
-    startTime: "20-12-2222",
-    endTime: "20-12-2222",
-    location: "Ha noi",
-    bedRoom: 2,
-    livingRoom: 1,
-    kitchenRoom: 1,
-    category: "Hotel",
-    image: "xxxxxxxx",
-  },
-  {
-    id: 1,
-    name: "Hotel Luxury",
-    description: "Vippro",
-    price: 100,
-    startTime: "20-12-2222",
-    endTime: "20-12-2222",
-    location: "Ha noi",
-    bedRoom: 2,
-    livingRoom: 1,
-    kitchenRoom: 1,
-    category: "Hotel",
-    image: "xxxxxxxx",
-  },
+    {id:1,name: 'Hotel Luxury',description:'Vippro',price:100,startTime:'20-12-2222',endTime:'20-12-2222',location:'Ha noi',bedRoom:2,livingRoom:1,kitchenRoom:1,category:'Hotel',image:'xxxxxxxx'},
+    {id:1,name: 'Hotel Luxury',description:'Vippro',price:100,startTime:'20-12-2222',endTime:'20-12-2222',location:'Ha noi',bedRoom:2,livingRoom:1,kitchenRoom:1,category:'Hotel',image:'xxxxxxxx'},
+    {id:1,name: 'Hotel Luxury',description:'Vippro',price:100,startTime:'20-12-2222',endTime:'20-12-2222',location:'Ha noi',bedRoom:2,livingRoom:1,kitchenRoom:1,category:'Hotel',image:'xxxxxxxx'},
+    {id:1,name: 'Hotel Luxury',description:'Vippro',price:100,startTime:'20-12-2222',endTime:'20-12-2222',location:'Ha noi',bedRoom:2,livingRoom:1,kitchenRoom:1,category:'Hotel',image:'xxxxxxxx'},
+    {id:1,name: 'Hotel Luxury',description:'Vippro',price:100,startTime:'20-12-2222',endTime:'20-12-2222',location:'Ha noi',bedRoom:2,livingRoom:1,kitchenRoom:1,category:'Hotel',image:'xxxxxxxx'},
+    {id:1,name: 'Hotel Luxury',description:'Vippro',price:100,startTime:'20-12-2222',endTime:'20-12-2222',location:'Ha noi',bedRoom:2,livingRoom:1,kitchenRoom:1,category:'Hotel',image:'xxxxxxxx'},
 ];
-
-function HouseManager() {
-  return (
-    <>
-<div className="table-users">
+export default function HouseManager() {
+    return (
+        <>
+            <div className="table-users">
                 <table className="table table-hover">
                     <thead>
                     <tr>
@@ -103,6 +26,7 @@ function HouseManager() {
                         <th scope="col" colSpan={2}>Action</th>
                     </tr>
                     </thead>
+
                     <tbody>
                     {houses.map((item) => (
                             <tr key={item.id}>
@@ -113,15 +37,17 @@ function HouseManager() {
                                 <td>{item.price}</td>
                                 <td style={{width:'100px'}}><button className="btn btn-primary text-caps btn-rounded btn-framed">Update</button></td>
                                 <td style={{width:'100px'}}><button className="btn btn-primary text-caps btn-rounded btn-framed">Delete</button></td>
+
                             </tr>
                         )
                     )}
+
+
                     </tbody>
                 </table>
             </div>
             <hr/>
-    </>
-  );
-}
 
-export default HouseManager;
+        </>
+    )
+}
