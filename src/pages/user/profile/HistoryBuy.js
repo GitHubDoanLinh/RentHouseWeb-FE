@@ -185,23 +185,44 @@ export default function HistoryBuy() {
   };
   const [idSelected, setIdSelected] = useState(0);
   const [rating, setRating] = useState(5);
-  const handleComment = (values) => {
-    dispatch(getById(values.houseId)).then(async (data) => {
-      let recipient = await knockClient.users.get(data.payload.userDTO.id);
-      await knockClient.notify("comment", {
-        actor: String(currentUser.id),
-        recipients: [String(recipient.id)],
-        data: {
-          comment: values.content,
-        },
-      });
-    });
-    values.star = rating;
-    dispatch(addComment(values)).then(() => {
+  const handleComment = async (values, { setSubmitting }) => {
+    try {
+      // Kiểm tra dữ liệu trước khi gửi
+      if (!values.content.trim()) {
+        toast.error("Vui lòng nhập nội dung đánh giá!", { position: "top-right" });
+        return;
+      }
+      if (!rating) {
+        toast.error("Vui lòng chọn số sao đánh giá!", { position: "top-right" });
+        return;
+      }
+  
+      // Gán giá trị sao
+      values.star = rating;
+  
+      // Gửi dữ liệu tới backend
+      const response = await dispatch(addComment(values));
+  
+      if (response.error) {
+        toast.error(
+          `Không thể gửi đánh giá: ${response.error.message || "Dữ liệu không hợp lệ."}`,
+          { position: "top-right" }
+        );
+        return;
+      }
+  
+      // Cập nhật giao diện và thông báo
+      toast.success("Đánh giá đã được gửi thành công!", { position: "top-right" });
       handleClose();
       dispatch(getHistoryBooking(id));
-    });
+    } catch (error) {
+      console.error("Error in handleComment:", error);
+      toast.error("Đã xảy ra lỗi không mong muốn. Vui lòng thử lại sau!", { position: "top-right" });
+    } finally {
+      setSubmitting(false); // Kết thúc trạng thái submit
+    }
   };
+  
   const formatPrice = (money) => {
     return money.toLocaleString("it-IT", {
       style: "currency",
