@@ -34,7 +34,7 @@ export default function HeaderUser() {
               <ul className="left">
                 <li>
                   <span>
-                    <i className="fa fa-phone"></i> +84 868 86 68 86
+                    <i className="fa fa-phone"></i> +84 64 201 507
                   </span>
                 </li>
               </ul>

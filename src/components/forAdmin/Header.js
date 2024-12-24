@@ -17,7 +17,7 @@ const Header = () => {
                             <ul className="left">
                                 <li>
                             <span>
-                                <i className="fa fa-phone"></i> +1 123 456 789
+                                <i className="fa fa-phone"></i> 0964201507
                             </span>
                                 </li>
                             </ul>

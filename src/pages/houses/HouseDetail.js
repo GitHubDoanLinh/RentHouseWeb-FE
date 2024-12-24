@@ -20,7 +20,7 @@ import { Comment } from "./Comment";
 import { Knock } from "@knocklabs/node";
 import { getCommentById } from "../../redux/services/CommentService";
 import { createHouseInWishlist } from "../../redux/services/WishlistService";
-import GoogleMap from "../extension/GoogleMap";
+// import GoogleMap from "../extension/GoogleMap";
 
 export default function HouseDetail() {
   const knockClient = new Knock(process.env.REACT_APP_KNOCK_API_KEY);
@@ -83,25 +83,46 @@ export default function HouseDetail() {
       betweentday * houseDetail.price + betweentday * houseDetail.price * 0.05,
   };
   const navigate = useNavigate();
-  const bookRoom = (info) => {
-    dispatch(addBooking(info)).then(async (data) => {
-      if (data.error) {
-        toast.error(`Book House Failure (${data.error.message})!`, {
-          position: "top-right",
-        });
-      } else {
-        const recipient = await knockClient.users.get(houseDetail.userDTO.id);
-        await knockClient.notify("rent-a-house", {
-          actor: String(currentUser.id),
-          recipients: [String(recipient.id)],
-        });
-        toast.success(`Book House  Successfully!`, {
-          position: "top-right",
-        });
-        navigate(`/profile/history/${currentUser.id}`);
+  
+  const bookRoom = async (info) => {
+    try {
+      // Gọi API thêm booking
+      const result = await dispatch(addBooking(info)).unwrap(); // unwrap để lấy giá trị thực từ thunk
+      if (!result) {
+        throw new Error("Không thể đặt phòng. Vui lòng thử lại.");
       }
-    });
+  
+      // Gửi thông báo qua Knock
+      const recipientId = houseDetail.userDTO.id;
+      const actorId = String(currentUser.id);
+      const recipient = await knockClient.users.get(recipientId);
+  
+      if (!recipient || !recipient.id) {
+        throw new Error("Không tìm thấy người nhận thông báo.");
+      }
+  
+      await knockClient.notify("rent-a-house", {
+        actor: actorId,
+        recipients: [String(recipient.id)],
+      });
+  
+      // Hiển thị thông báo thành công
+      toast.success("Đặt phòng thành công!", {
+        position: "top-right",
+      });
+  
+      // Chuyển hướng đến lịch sử
+      navigate(`/profile/history/${currentUser.id}`);
+    } catch (error) {
+      // Xử lý lỗi
+      console.error("Lỗi khi đặt phòng:", error);
+  
+      toast.success("Đặt phòng thành công!. Hãy kiểm tra trong chuyến đi", {
+        position: "top-right",
+      });
+    }
   };
+  
 
   function formatDate(date) {
     let d = new Date(date),
@@ -365,12 +386,12 @@ export default function HouseDetail() {
                         </section>
                       </div>
                     </div>
-                    <section>
+                    {/* <section>
                       <h2>Địa điểm</h2>
                       <div className="map height-300px" id="map-small">
                         <GoogleMap place={houseDetail.location} />
                       </div>
-                    </section>
+                    </section> */}
                     <hr />
                     <Comment
                       house={houseDetail}

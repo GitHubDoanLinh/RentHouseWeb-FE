@@ -32,13 +32,13 @@ export default function ManagerHouse() {
                     <i className="fa fa-check"></i>
                     Nhà đã cho thuê
                   </Link>
-                  <Link
+                  {/* <Link
                     className="nav-link icon"
                     to={`/manager-house/money/${currentUser.id}`}
                   >
                     <i className="fa fa-check"></i>
                     Biểu đồ doanh thu
-                  </Link>
+                  </Link> */}
                 </nav>
               </div>
               <Outlet />

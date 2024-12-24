@@ -33,9 +33,10 @@ export default function RegisterHost() {
                             1. Căn cước công dân/ hộ chiếu<br/>
                             2. Bộ ảnh về chỗ ở của bạn<br/>
                             3. Tài khoản/ thẻ bank có visa/ Mastercard.<br/>
-                            4. Số phone<br/>
+                            4. Số điện thoại<br/>
                             5. Email.<br/>
                             6. Khuôn mặt tươi tỉnh của bạn.<br/>
+                            7. Inbox thông tin tới Zalo 0964201507 để liên hệ Admin!<br/>
                             <Link to={`/profile/profile-detail/${id}`} style={{color: 'blue'}}>--Cập nhật thông tin cá
                                 nhân tại đây--</Link></p>
                         <h4>6 bước cần thực hiện</h4>
