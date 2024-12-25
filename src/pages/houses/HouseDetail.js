@@ -86,13 +86,11 @@ export default function HouseDetail() {
   
   const bookRoom = async (info) => {
     try {
-      // Gọi API thêm booking
       const result = await dispatch(addBooking(info)).unwrap(); // unwrap để lấy giá trị thực từ thunk
       if (!result) {
         throw new Error("Không thể đặt phòng. Vui lòng thử lại.");
       }
   
-      // Gửi thông báo qua Knock
       const recipientId = houseDetail.userDTO.id;
       const actorId = String(currentUser.id);
       const recipient = await knockClient.users.get(recipientId);
@@ -106,15 +104,12 @@ export default function HouseDetail() {
         recipients: [String(recipient.id)],
       });
   
-      // Hiển thị thông báo thành công
       toast.success("Đặt phòng thành công!", {
         position: "top-right",
       });
   
-      // Chuyển hướng đến lịch sử
       navigate(`/profile/history/${currentUser.id}`);
     } catch (error) {
-      // Xử lý lỗi
       console.error("Lỗi khi đặt phòng:", error);
   
       toast.success("Đặt phòng thành công!. Hãy kiểm tra trong chuyến đi", {
