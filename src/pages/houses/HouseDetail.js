@@ -208,7 +208,7 @@ export default function HouseDetail() {
                     <div className="number">
                       {formatPrice(houseDetail.price)}
                     </div>
-                    <div className="id opacity-70">
+                    {/* <div className="id opacity-70">
                       <button
                         className={"btnWishlist"}
                         style={{}}
@@ -216,7 +216,7 @@ export default function HouseDetail() {
                       >
                         <i className="fa fa-heart"></i> <u>Lưu</u>
                       </button>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

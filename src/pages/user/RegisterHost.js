@@ -46,7 +46,7 @@ export default function RegisterHost() {
                             2. Bộ ảnh cần sống động, chân thực để mô tả được căn hộ của bạn<br/>
                             3. Bạn cần có chính sách giá tốt cho giai đoạn đầu tiên và nhận được đánh giá tốt của
                             khách<br/>
-                            4. Bạn cần dọn phòng và set up phòng sạch sẽ và đẹp mắt.<br/>
+                            4. Bạn chỉ được xác nhận cho thuê phòng trước thời hạn check in 1 ngày.<br/>
                             5. Tự động check in/ out bằng khoá thông minh là lợi thế lắm đó<br/>
                             6. Bạn đừng lo ngại về việc mất đồ, vì chúng tôi đã xác thực khách và bảo hiểm cho bạn. Đại
                             đa số khách là khách lịch sự và giữ gìn đồ đạc.<br/>
@@ -63,7 +63,7 @@ export default function RegisterHost() {
                             - Chúng ta cần phải bán hết số phòng mà hotel có, chứ không phải chỉ bán 1 phòng<br/>
                             - Hotel của chúng ta có 3 hạng phòng khác nhau, giá bán khác nhau.</p>
                         <section className="text-center">
-                            <button type="submit" className="btn btn-primary" onClick={() => registerHost(id)}>Đăng kí
+                            <button type="submit" className="btn btn-primary" onClick={() => registerHost(id)}>Xác nhận đăng ký
                                 làm chủ nhà
                             </button>
                         </section>

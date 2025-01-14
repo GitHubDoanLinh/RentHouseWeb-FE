@@ -17,7 +17,7 @@ export default function Register() {
             (data) => {
                 if (data.error) {
                     console.log(data.error);
-                    toast.error(`Đăng ký thất bại (${data.error.message})!`, {
+                    toast.error(`Đăng ký thất bại - email hoặc usename đã được sử dụng!(${data.error.message})!`, {
                         position: "top-right"
                     });
                 } else {

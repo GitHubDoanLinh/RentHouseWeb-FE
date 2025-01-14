@@ -12,11 +12,24 @@ export default function SoldItem() {
     const listBookingHost = useSelector(({ bookings }) => bookings.list || []);
 
     useEffect(() => {
-        dispatch(getAllBookingByHostId(id));
+        dispatch(getAllBookingByHostId(id))
+            .then((data) => {
+                if (data.error) {
+                    console.error('Lỗi khi lấy danh sách booking:', data.error.message);
+                    toast.error('Không thể tải danh sách booking!', { position: 'top-right' });
+                }
+            });
     }, [dispatch, id]);
 
+    // Đảo ngược danh sách booking
     let listBookingHostReverse = [...listBookingHost].reverse();
 
+    // Kiểm tra dữ liệu trước khi render
+    if (!Array.isArray(listBookingHostReverse) || listBookingHostReverse.length === 0) {
+        return <div>Không có dữ liệu đặt phòng</div>;
+    }
+
+    // Hàm định dạng ngày tháng
     function formatDate(date) {
         const d = new Date(date);
         const month = String(d.getMonth() + 1).padStart(2, '0');
@@ -25,6 +38,7 @@ export default function SoldItem() {
         return [year, month, day].join('-');
     }
 
+    // Hàm xử lý Check In
     const setCheckIn = (idBooking) => {
         dispatch(setCheckInStatus(idBooking)).then((data) => {
             if (data.error) {
@@ -36,6 +50,7 @@ export default function SoldItem() {
         });
     };
 
+    // Render trạng thái booking
     const statusInfo = (status) => {
         const statusStyles = {
             CHECK_IN: { color: 'white', backgroundColor: 'steelblue', label: 'Nhận phòng' },
@@ -51,11 +66,8 @@ export default function SoldItem() {
         );
     };
 
+    // Hàm định dạng giá tiền
     const formatPrice = (money) => money.toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
-
-    if (!listBookingHostReverse || listBookingHostReverse.length === 0) {
-        return <div>Không có dữ liệu đặt phòng</div>;
-    }
 
     return (
         <div className="col-md-9" style={{ marginLeft: "32px" }}>

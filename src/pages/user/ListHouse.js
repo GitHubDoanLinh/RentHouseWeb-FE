@@ -64,7 +64,7 @@ export default function ListHouse() {
           className="text-danger text-center "
           style={{ marginBottom: "32px !important" }}
         >
-          HÃY THUÊ VÀ BÁN NHÀ THEO CÁCH CỦA BẠN
+          HÃY THUÊ VÀ CHO THUÊ THEO CÁCH CỦA BẠN
         </h2>
         <div className="container">
           <div className="main-search-form">
@@ -224,11 +224,42 @@ export default function ListHouse() {
                   return <House key={item.id} item={item} />;
                 })}
             </div>
-            <div className="center">
+            {/* <div className="center">
               <a href="#" className="btn btn-primary btn-framed btn-rounded">
                 Tải thêm
               </a>
-            </div>
+            </div> */}
+                            <div className="page-pagination">
+                    <nav aria-label="Pagination">
+                        <ul className="pagination">
+                            <li className="page-item">
+                                <a className="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">
+                                            <i className="fa fa-chevron-left"></i>
+                                        </span>
+                                    <span className="sr-only">Previous</span>
+                                </a>
+                            </li>
+                            <li className="page-item active">
+                                <a className="page-link" href="#">1</a>
+                            </li>
+                            <li className="page-item">
+                                <a className="page-link" href="#">2</a>
+                            </li>
+                            <li className="page-item">
+                                <a className="page-link" href="#">3</a>
+                            </li>
+                            <li className="page-item">
+                                <a className="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">
+                                            <i className="fa fa-chevron-right"></i>
+                                        </span>
+                                    <span className="sr-only">Next</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
           </div>
         </section>
       </section>

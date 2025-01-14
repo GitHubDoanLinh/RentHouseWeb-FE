@@ -16,9 +16,12 @@ export default function Login() {
     dispatch(login(value)).then((data) => {
       if (data.error) {
         navigate("/login");
-        toast.error(`Đăng nhập thất bại (${data.error.message})!`, {
-          position: "top-right",
-        });
+        toast.error(
+          `Đăng nhập thất bại, hãy kiểm tra lại thông tin(${data.error.message})!`,
+          {
+            position: "top-right",
+          }
+        );
       } else {
         dispatch(getUser(data.payload.id))
           .then(async (res) => {

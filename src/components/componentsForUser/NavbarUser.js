@@ -66,13 +66,13 @@ export default function NavbarUser() {
                   </Link>
                 </li>
                 <li>
-                  <Link
+                  {/* <Link
                     to={`/profile/bookmarks/${currentUser.id}`}
                     href="#"
                     className="nav-link"
                   >
                     Yêu thích
-                  </Link>
+                  </Link> */}
                 </li>
                 <li className="nav-item has-child">
                   <Link
@@ -90,7 +90,7 @@ export default function NavbarUser() {
                         href="#"
                         className="nav-link"
                       >
-                        Thông tin
+                        Thông tin cá nhân
                       </Link>
                     </li>
                     {isOwner && isOwner === 2 ? (
