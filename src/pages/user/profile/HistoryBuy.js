@@ -301,7 +301,7 @@ export default function HistoryBuy() {
                       </li>
                     </ul>
                   </div>
-                  {item.status && item.status === "IN_PROGRESS" ? (
+                  {item.status && item.status === "IN_PROGRESS" ? (   
                     <button
                       onClick={() =>
                         deleteBooking(item.bookingId, item.idHost, item.name)

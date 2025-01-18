@@ -23,13 +23,13 @@ export default function Profile() {
                   <i className="fa fa-recycle"></i>
                   Đổi mật khẩu
                 </Link>
-                <Link
+                {/* <Link
                   to={`/profile/bookmarks/${currentUser.id}`}
                   className="nav-link icon"
                 >
                   <i className="fa fa-heart"></i>
                   Danh sách nhà yêu thích
-                </Link>
+                </Link> */}
                 <Link
                   to={`/profile/history/${currentUser.id}`}
                   className="nav-link icon"

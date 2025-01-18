@@ -102,6 +102,11 @@ export default function SoldItem() {
                                         <i className="fa fa-user"></i>Người đặt: {item?.user?.fullName || 'Không rõ'}
                                     </a>
                                 </figure>
+                                <figure>
+                                    <a href="#">
+                                        <i className="fa fa-phone"></i>SĐT: {item?.user?.phone || 'Không rõ'}
+                                    </a>
+                                </figure>
                             </div>
                             <div className="additional-info">
                                 <ul>

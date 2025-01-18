@@ -83,41 +83,40 @@ export default function HouseDetail() {
       betweentday * houseDetail.price + betweentday * houseDetail.price * 0.05,
   };
   const navigate = useNavigate();
-  
+
   const bookRoom = async (info) => {
     try {
       const result = await dispatch(addBooking(info)).unwrap(); // unwrap để lấy giá trị thực từ thunk
       if (!result) {
         throw new Error("Không thể đặt phòng. Vui lòng thử lại.");
       }
-  
+
       const recipientId = houseDetail.userDTO.id;
       const actorId = String(currentUser.id);
       const recipient = await knockClient.users.get(recipientId);
-  
+
       if (!recipient || !recipient.id) {
         throw new Error("Không tìm thấy người nhận thông báo.");
       }
-  
+
       await knockClient.notify("rent-a-house", {
         actor: actorId,
         recipients: [String(recipient.id)],
       });
-  
+
       toast.success("Đặt phòng thành công!", {
         position: "top-right",
       });
-  
+
       navigate(`/profile/history/${currentUser.id}`);
     } catch (error) {
       console.error("Lỗi khi đặt phòng:", error);
-  
+
       toast.success("Đặt phòng thành công!. Hãy kiểm tra trong chuyến đi", {
         position: "top-right",
       });
     }
   };
-  
 
   function formatDate(date) {
     let d = new Date(date),
@@ -349,9 +348,11 @@ export default function HouseDetail() {
                             {houseDetail.description}
                             <br />
                             <br />
-                            CHECK IN : 14:00
+                            CHECK IN : 07:00
                             <br />
-                            CHECKOUT : 12:00
+                            CHECKOUT : 07:00
+                            <br />
+                            LƯU Ý: BẠN CHỈ CÓ THỂ HỦY THUÊ TRƯỚC THỜI HẠN CHECKIN CHÍNH THỨC NHIỀU HƠN <span style={{ color: "red" }}>1 NGÀY !</span>
                           </p>
                         </section>
                         <hr />

@@ -56,14 +56,14 @@ export function House ({item}) {
                     </h4>
                     <div className="price">{formatPrice(item.price)}</div>
                     <div className="meta">
-                        <figure>
+                        {/* <figure>
                             <div><button className={'btnWishlist'} style={{border: 'none'}}
                                                                onClick={() => handleAddWishlist({
                                                                    userId: currentUser.id,
                                                                    houseId: item.id
                                                                })}><i className="fa fa-heart"></i></button>
                             </div>
-                        </figure>
+                        </figure> */}
                         <figure>
                             <a href="#">
                                 <i className="fa fa-user"></i>{item.userDTO.fullName}

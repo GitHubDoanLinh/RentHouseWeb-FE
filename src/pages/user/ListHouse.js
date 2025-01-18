@@ -229,37 +229,43 @@ export default function ListHouse() {
                 Tải thêm
               </a>
             </div> */}
-                            <div className="page-pagination">
-                    <nav aria-label="Pagination">
-                        <ul className="pagination">
-                            <li className="page-item">
-                                <a className="page-link" href="#" aria-label="Previous">
-                                        <span aria-hidden="true">
-                                            <i className="fa fa-chevron-left"></i>
-                                        </span>
-                                    <span className="sr-only">Previous</span>
-                                </a>
-                            </li>
-                            <li className="page-item active">
-                                <a className="page-link" href="#">1</a>
-                            </li>
-                            <li className="page-item">
-                                <a className="page-link" href="#">2</a>
-                            </li>
-                            <li className="page-item">
-                                <a className="page-link" href="#">3</a>
-                            </li>
-                            <li className="page-item">
-                                <a className="page-link" href="#" aria-label="Next">
-                                        <span aria-hidden="true">
-                                            <i className="fa fa-chevron-right"></i>
-                                        </span>
-                                    <span className="sr-only">Next</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+            {/* <div className="page-pagination">
+              <nav aria-label="Pagination">
+                <ul className="pagination">
+                  <li className="page-item">
+                    <a className="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">
+                        <i className="fa fa-chevron-left"></i>
+                      </span>
+                      <span className="sr-only">Previous</span>
+                    </a>
+                  </li>
+                  <li className="page-item active">
+                    <a className="page-link" href="#">
+                      1
+                    </a>
+                  </li>
+                  <li className="page-item">
+                    <a className="page-link" href="#">
+                      2
+                    </a>
+                  </li>
+                  <li className="page-item">
+                    <a className="page-link" href="#">
+                      3
+                    </a>
+                  </li>
+                  <li className="page-item">
+                    <a className="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">
+                        <i className="fa fa-chevron-right"></i>
+                      </span>
+                      <span className="sr-only">Next</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div> */}
           </div>
         </section>
       </section>

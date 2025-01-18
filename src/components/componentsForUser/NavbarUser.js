@@ -107,9 +107,9 @@ export default function NavbarUser() {
                       ""
                     )}
                     <li className="nav-item has-child">
-                      <Link to={""} href="#" className="nav-link">
+                      {/* <Link to={""} href="#" className="nav-link">
                         Tin nhắn
-                      </Link>
+                      </Link> */}
                     </li>
 
                     <li className="nav-item has-child">
